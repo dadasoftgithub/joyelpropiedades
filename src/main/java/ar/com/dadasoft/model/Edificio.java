@@ -13,7 +13,7 @@ public class Edificio implements Serializable {
 	private int laundry;
 	private int spa;
 	private String descripcion;		//ESTA DESCRIPCION DEBER IR SEPARADA POR ; //
-	private String direccion;
+	private String calle;
 	private String mapa;
 
 
@@ -21,7 +21,7 @@ public class Edificio implements Serializable {
 	public Edificio() {
 	}
 
-	public Edificio(Long id, String titulo, String foto, int sum, int picina, int gimnacio, int laundry, int spa, String descripcion, String direccion, String mapa) {
+	public Edificio(Long id, String titulo, String foto, int sum, int picina, int gimnacio, int laundry, int spa, String descripcion, String calle, String mapa) {
 		this.id = id;
 		this.titulo = titulo;
 		this.foto = foto;
@@ -31,7 +31,7 @@ public class Edificio implements Serializable {
 		this.laundry = laundry;
 		this.spa = spa;
 		this.descripcion = descripcion;
-		this.direccion = direccion;
+		this.calle = calle;
 		this.mapa = mapa;
 	}
 
@@ -109,12 +109,12 @@ public class Edificio implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public String getDireccion() {
-		return direccion;
+	public String getCalle() {
+		return calle;
 	}
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setCalle(String calle) {
+		this.calle = calle;
 	}
 
 	public String getMapa() {

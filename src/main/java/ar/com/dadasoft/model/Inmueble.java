@@ -4,7 +4,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
 
@@ -31,7 +30,7 @@ public class Inmueble implements Serializable {
 	private int superficie;
 
 	@NotEmpty
-	private String direccion;
+	private String calle;
 
 	@NotEmpty
 	private int altura;
@@ -46,24 +45,29 @@ public class Inmueble implements Serializable {
 	@NotEmpty
 	private int estado;				//0=activo 1=inactivo 2=eliminado
 
+	private int cantAmbientes;
+
 
 
     //Contructores
 	public Inmueble() {
+
 	}
 
-	public Inmueble(Long id, String tipoPropiedad, int tipoOperacion, double importe, int superficie, String direccion, int altura, int localidad, String mapa, String descripcion, int estado) {
+
+	public Inmueble(Long id, String tipoPropiedad, int tipoOperacion, double importe, int superficie, String calle, int altura, int localidad, String mapa, String descripcion, int estado, int cantAmbientes) {
 		this.id = id;
 		this.tipoPropiedad = tipoPropiedad;
 		this.tipoOperacion = tipoOperacion;
 		this.importe = importe;
 		this.superficie = superficie;
-		this.direccion = direccion;
+		this.calle = calle;
 		this.altura = altura;
 		this.localidad = localidad;
 		this.mapa = mapa;
 		this.descripcion = descripcion;
 		this.estado = estado;
+		this.cantAmbientes = cantAmbientes;
 	}
 
 
@@ -79,10 +83,6 @@ public class Inmueble implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getTipoPropiedad() {
-		return cantidad;
 	}
 
 	public void setTipoPropiedad(String tipoPropiedad) {
@@ -113,12 +113,12 @@ public class Inmueble implements Serializable {
 		this.superficie = superficie;
 	}
 
-	public String getDireccion() {
-		return direccion;
+	public String getCalle() {
+		return calle;
 	}
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setCalle(String calle) {
+		this.calle = calle;
 	}
 
 	public int getAltura() {
@@ -159,6 +159,18 @@ public class Inmueble implements Serializable {
 
 	public void setEstado(int estado) {
 		this.estado = estado;
+	}
+
+	public String getTipoPropiedad() {
+		return tipoPropiedad;
+	}
+
+	public int getCantAmbientes() {
+		return cantAmbientes;
+	}
+
+	public void setCantAmbientes(int cantAmbientes) {
+		this.cantAmbientes = cantAmbientes;
 	}
 
 }
