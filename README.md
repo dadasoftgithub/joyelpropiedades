@@ -5,7 +5,7 @@
 ### BACKEND
 
 ### FRONTEND
-=> Vue.js 
-=> Bootstrap 4
-=> Axios
+=> Vue.js <br/>
+=> Bootstrap 4 <br/>
+=> Axios <br/>
 => Vee validate (Vue package)
