@@ -20,6 +20,9 @@ https://start.spring.io/
 group: ar.com.dadasoft
 artifact: app
 dependencias:  Web, Actuator, JPA, MySQL
+
+Acerca de CORS
+https://spring.io/guides/gs/rest-service-cors/
 ### FRONTEND
 
 #Inicializamos vue con:

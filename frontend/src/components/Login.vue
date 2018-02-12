@@ -45,6 +45,8 @@
                       <p class="text-right forgot"><a href="">{{ forgotPwd }}</a></p>
 
                       <b-button type="submit" variant="primary" class="btn-block btn-success" :disabled="errors.any()" @click="onSubmit">{{ sendMsg }}</b-button>
+
+                      <b-alert variant="success">Bienvenido</b-alert>
                     </b-form-group>
 
                     <hr>
@@ -64,6 +66,7 @@
 
 <script>
 import {AXIOS} from './http-common'
+// import axios from 'axios'
 export default {
   name: 'login',
   data () {
@@ -80,7 +83,6 @@ export default {
   },
   methods: {
     onSubmit: function () {
-      console.log('this USER', this.User)
       // utilizamos el validador de vee validator
       this.$validator.validateAll().then((result) => {
         console.log('form valido', this.User)
@@ -91,15 +93,19 @@ export default {
         }
         let newUser = {
           email: this.User.email,
-          password: this.User.password
+          name: this.User.password
         }
         console.log('newUser', newUser)
-        AXIOS.post('api/hello')
+        AXIOS.post(`api/hello`, {
+          email: this.User.email,
+          name: this.User.password
+        })
           .then((response) => {
+            // this.response = response.data
             console.log('response', response)
           })
-      }).catch((error) => {
-        console.log('error', error)
+      }).catch(e => {
+        this.errors.push(e)
       })
     }
   }

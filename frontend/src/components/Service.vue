@@ -36,7 +36,7 @@ export default {
         .then(response => {
           // JSON responses are automatically parsed.
           this.response = response.data
-          console.log('response data', response.data)
+          console.log('response data from service ', response.data)
         })
         .catch(e => {
           this.errors.push(e)

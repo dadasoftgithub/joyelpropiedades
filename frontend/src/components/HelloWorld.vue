@@ -92,7 +92,7 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Crypto Info',
+      msg: 'Welcome to Info',
       pepito: 'holis'
     }
   }
