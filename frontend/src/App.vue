@@ -1,8 +1,13 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
-  </div>
+    <!-- <img src="./assets/logo.png"> -->
+    <main>
+      <b-container>
+        <router-view to="/Registro">Registro</router-view>
+      </b-container>
+    </main>
+<!--     <router-view></router-view>
+ -->  </div>
 </template>
 
 <script>
@@ -19,5 +24,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.cover {
+  background: #2c3e50 url(./assets/cover-login.jpg) center;
+  background-size: cover;
+  border-radius: 0;
+  height: auto;
+  width: 100%;
 }
 </style>

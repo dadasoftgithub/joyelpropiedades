@@ -80,6 +80,9 @@
           awesome-vue
         </a>
       </li>
+      <li>HowTo call REST-Services:</li>
+      <li><a href="/#/callservice/" target="_blank">/callservice</a></li>
+
     </ul>
   </div>
 </template>
@@ -89,7 +92,7 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
+      msg: 'Welcome to Crypto Info',
       pepito: 'holis'
     }
   }

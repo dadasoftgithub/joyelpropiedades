@@ -6,7 +6,7 @@
     <h6><b-badge variant="primary"> Let´s go!</b-badge> Call a Spring Boot REST backend service, by clicking a button:</h6>
     <p></p>
     <b-btn variant="success" @click="callRestService(); showResponse=true" id="btnCallHello">/hello (GET)</b-btn>
-    <p>this is just a parragraph</p>
+    <p></p>
     <h4>Backend response: <b-alert :show="showResponse" dismissible @dismissed="showResponse=false">{{ response }}</b-alert></h4>
 
     <b-btn v-b-toggle.collapse1>Show Response details</b-btn>
@@ -23,11 +23,11 @@
         <b-btn v-b-toggle.collapse2_inner size="sm" id="btnHttpHeaders" variant="warning">HTTP Headers</b-btn>
         <b-collapse id=collapse2_inner class="mt-2">
 
-          <p v-if="headers && headers.length">
+<!--           <p v-if="headers && headers.length">
             <li v-for="header of headers">
             <b-card>Header: {{ header.valueOf() }}</b-card>
             </li>
-          </p>
+          </p> -->
         </b-collapse>
 
         <b-btn v-b-toggle.collapse3_inner size="sm" variant="danger">Full Request configuration</b-btn>
@@ -36,7 +36,6 @@
         </b-collapse>
       </b-card>
     </b-collapse>
-
 
     <b-tooltip target="btnHttpHeaders" title="You should always know your HTTP Headers!"></b-tooltip>
 
@@ -88,7 +87,6 @@ export default {
 }
 
 </script>
-
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
