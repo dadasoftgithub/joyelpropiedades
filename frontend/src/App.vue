@@ -3,8 +3,8 @@
     <!-- <img src="./assets/logo.png"> -->
     <main>
       <b-container>
-<!--         <router-view to="/Registro">Registro</router-view>
- -->         <router-view></router-view>
+        <router-view to="/Registro">Registro</router-view>
+        <!-- <router-view></router-view> -->
 
       </b-container>
     </main>

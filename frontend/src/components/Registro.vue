@@ -12,7 +12,7 @@
                       <figure>
                         <img src="./../assets/house.svg" class="img-thumbnail rounded-circle" alt="logotipo" />
                       </figure>
-                      <label>Información básica</label>
+                      <label>Información básicaaaaa</label>
                       <b-form-group id="nameRegistro"
                         label="Nombre"
                         label-for="nombre">

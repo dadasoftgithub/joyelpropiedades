@@ -27,6 +27,10 @@ https://spring.io/guides/gs/rest-service-cors/
 Links útiles: <br>
 https://www.linkedin.com/pulse/vuejs-spring-boot-perfect-combination-simon-martinelli
 
+````
+mvn --projects backend spring-boot:run
+
+````
 
 ### FRONTEND
 
@@ -38,7 +42,7 @@ vue init webpack frontend
 
 Una vez que se instala vamos a
 ```
-frontend/config/index.js 
+frontend/config/index.js
 ```
 y modificamos la carpeta final de distribucion
 para que todo se direccione a /target.
