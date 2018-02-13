@@ -4,16 +4,15 @@
 
 
 ### Arquitectura
-
-spring-boot-vuejs <br>
-├─┬ backend → backend module with Spring Boot stuff <br>
+```
+spring-boot-vuejs
+├─┬ backend     → backend module with Spring Boot stuff
 │ ├── src
-| | └── controller
-| | └── domain
 │ └── pom.xml
-├─┬ frontend → frontend module with Vue.js stuff
+├─┬ frontend    → frontend module with Vue.js stuff
 │ └── pom.xml
-└── pom.xml → Maven parent pom with modules
+└── pom.xml     → Maven parent pom with modules
+```
 
 ### BACKEND
 Las dependencias para spring boot se configuran desde este sitio
