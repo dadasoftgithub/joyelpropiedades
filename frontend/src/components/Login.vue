@@ -8,7 +8,7 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col cols="6" class="mx-auto">
+        <b-col md="12" lg="6" class="mx-auto">
           <div class="flip">
             <b-card>
               <div class="face front">
@@ -50,9 +50,9 @@
                     </b-form-group>
 
                     <hr>
-                    <p class="text-center">
+                    <a class="text-center cursor">
                       <router-link to="/registro"  tag="span" class="fliper-btn">{{ createAccount }}</router-link>
-                    </p>
+                    </a>
                   </b-form>
                 </div>
               </div>
@@ -153,6 +153,9 @@ box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 15px 0 rgba(0,0,0,0.12) !importan
   figure {
     max-width: 20%;
     margin: 0px auto;
+  }
+  .cursor {
+    cursor: pointer;
   }
 
 </style>
