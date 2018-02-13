@@ -86,7 +86,6 @@
     			<addResources>true</addResources>
 				</configuration>
 			</plugin>
-
 			<plugin>
 		<artifactId>maven-resources-plugin</artifactId>
  		<executions>

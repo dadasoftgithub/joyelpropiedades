@@ -13,7 +13,17 @@ spring-boot-vuejs
 │ └── pom.xml
 └── pom.xml     → Maven parent pom with modules
 ```
-
+NOTA: para que el POM de frontend corra con éxito hay que instalar manualmente la dependencia de webpack. Ir a
+`````
+cd frontend
+`````
+y luego:
+````
+npm install webpack --save dev
+````
+y después hacemos
+````
+mvn clean install
 ### BACKEND
 Las dependencias para spring boot se configuran desde este sitio
 https://start.spring.io/
@@ -34,6 +44,7 @@ mvn --projects backend spring-boot:run
 
 ### FRONTEND
 
+````
 #Inicializamos vue con:
 ```
 vue init webpack frontend
