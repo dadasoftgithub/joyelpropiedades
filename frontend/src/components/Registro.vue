@@ -12,7 +12,7 @@
                       <figure>
                         <img src="./../assets/house.svg" class="img-thumbnail rounded-circle" alt="logotipo" />
                       </figure>
-                      <label>Información básicaaaaa</label>
+                      <label>Información básica</label>
                       <b-form-group id="nameRegistro"
                         label="Nombre"
                         label-for="nombre">
@@ -49,5 +49,7 @@
       max-width: 20%;
       margin: 0px auto;
     }
-
+   .card {
+     border: 1px solid lime;
+   }
   </style>

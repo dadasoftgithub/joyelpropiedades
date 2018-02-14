@@ -91,11 +91,10 @@ export default {
           alert('error')
           return
         }
-        let newUser = {
+        /* let newUser = {
           email: this.User.email,
           name: this.User.password
-        }
-        console.log('newUser', newUser)
+        } */
         AXIOS.post(`api/hello`, {
           email: this.User.email,
           name: this.User.password
@@ -141,7 +140,7 @@ box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 15px 0 rgba(0,0,0,0.12) !importan
   transform: rotatey(-180deg);
   }
   .card {
-    border: none;
+    border: none!;
   }
   .form-control.error {
     border-color: #E84444;

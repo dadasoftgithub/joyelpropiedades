@@ -141,7 +141,7 @@ SI A USTED LE CUESTA USAR LA COMPUTADORA Y POR ESO USA WINDOWS...
 
 	npm install --global vue-cli
 
-15. pararse en la carpeta de frontend e 
+15. pararse en la carpeta de frontend e
 
 	cd <path_al_directorio_root>/frontend
 
@@ -156,9 +156,9 @@ SI A USTED LE CUESTA USAR LA COMPUTADORA Y POR ESO USA WINDOWS...
 	mvn clean install
 
 19. corremos spring boot
-
-	mvn springboot:run
-
+````
+	mvn --projects backend spring-boot:run
+````
 
 
 --> RECUERDE: Ante cualquier duda, siempre recuerde que google atiende las 24hs
