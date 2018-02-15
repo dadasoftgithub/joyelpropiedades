@@ -5,12 +5,22 @@ import Login from '@/components/Login'
 import Service from '@/components/Service'
 import Bootstrap from '@/components/Bootstrap'
 import Registro from '@/components/Registro'
+import TestPanel from '@/components/TestPanel'
+
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
+      path: '*',
+      redirect: '/login'
+    },
+    {
       path: '/',
+      redirect: '/login'
+    },
+    {
+      path: '/login',
       name: 'Login',
       component: Login
     },
@@ -18,6 +28,14 @@ export default new Router({
       path: '/registro',
       name: 'Registro',
       component: Registro
+    },
+    {
+      path: '/testpanel',
+      name: 'TestPanel',
+      component: TestPanel,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/callservice',

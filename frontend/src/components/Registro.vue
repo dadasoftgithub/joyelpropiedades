@@ -1,6 +1,6 @@
   <template>
     <div>
-      <h1>registro</h1>
+      <h6>Sign Up</h6>
       <b-container fluid>
         <b-row>
           <b-col md="12" lg="6" class="mx-auto">
@@ -8,7 +8,7 @@
               <b-card>
                 <div class="face back">
                   <div class="panel panel-default">
-                    <b-form class="form-horizontal">
+                    <b-form class="form-horizontal" @submit.prevent="validateBeforeSubmit">
                       <figure>
                         <img src="./../assets/house.svg" class="img-thumbnail rounded-circle" alt="logotipo" />
                       </figure>
@@ -34,6 +34,11 @@
                         <b-form-input class="form-control" type="password" id="password" name="password" placeholder="Ingresa una contraseña" autocomplete="new-password" aria-required="true">
                         </b-form-input>
                       </b-form-group>
+                      <b-button type="submit"
+                        variant="primary"
+                        class="btn-block btn-success"
+                        :disabled="errors.any()">Registro</b-button>
+                      <h6> Volver a: <router-link to="/login" >login</router-link>  </h6>
                     </b-form>
                   </div>
                 </div>
@@ -44,12 +49,19 @@
       </b-container>
     </div>
   </template>
-  <style scoped>
+
+<script>
+export default {
+  name: 'registro',
+  data: function () {
+    return {}
+  },
+  methods: {}
+}
+</script>
+<style scoped>
     figure {
       max-width: 20%;
       margin: 0px auto;
     }
-   .card {
-     border: 1px solid lime;
-   }
-  </style>
+</style>

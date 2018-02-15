@@ -3,8 +3,8 @@
     <!-- <img src="./assets/logo.png"> -->
     <main>
       <b-container>
-        <router-view to="/Registro">Registro</router-view>
-        <!-- <router-view></router-view> -->
+        <!--<router-view to="/Registro">Registro</router-view> -->
+         <router-view></router-view>
 
       </b-container>
     </main>
@@ -25,7 +25,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin:0;
+  background: #cb2d3e;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ef473a, #cb2d3e);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ef473a, #cb2d3e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .cover {
   background: #2c3e50 url(./assets/cover-login.jpg) center;
