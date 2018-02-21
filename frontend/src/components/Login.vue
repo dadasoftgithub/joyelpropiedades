@@ -77,36 +77,30 @@ export default {
       }
     }
   },
-  mounted: {
-    isComplete() {
-      return this.user
-    }
-  },
   methods: {
-     validateBeforeSubmit () {
+    validateBeforeSubmit () {
       this.$validator.validateAll().then((result) => {
         if (result) {
           alert('form submitted!')
           console.log('form valido', this.user, result)
-          this.validaeBeforeSubmit();
+          // this.onSubmit()
         }
         alert('correct the form there are errors')
       })
     },
     onSubmit: function () {
-      //this.validaeBeforeSubmit();
-      var self = this;
+      // this.validaeBeforeSubmit();
+      var self = this
       this.$validator.validateAll().then((result) => {
         if (result) {
-
-          axios.post('/testsave',self.user)
-          .then((response) => {
-            this.response = response.data
-            console.log('respuesta: ', response.data)
-          })
+          axios.post('/testsave', self.user)
+            .then((response) => {
+              this.response = response.data
+              console.log('respuesta: ', response.data)
+            })
         }
-      }) //ends validator
-      /* axios.post('/testsave', {
+      }) // ends validator
+      /*  axios.post('/testsave', {
         email: this.user.email,
         password: this.user.password
       })
