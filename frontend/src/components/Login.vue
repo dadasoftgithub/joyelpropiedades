@@ -15,22 +15,22 @@
                     <b-form-group id="emailLogin"
                       label="Email"
                       label-for="email">
-                      <b-form-input id="email" autocomplete="email" type="email" name="email"  autofocus  class="form-control" placeholder="Ingrese su email" v-model="User.email" v-validate.initial="'email'"  v-bind:class=" {'form-control':true,
+                      <b-form-input id="email" autocomplete="email" type="email" name="email"  autofocus  class="form-control" placeholder="Ingrese su email" v-model="user.email" v-validate.initial="'email'"  v-bind:class=" {'form-control':true,
                         'error': errors.has('email') } "></b-form-input>
                       <p>
                         <span v-show="errors.has('email')" class="text-danger">
                           {{ errors.first('email') }}
                         </span>
                       </p>
-                      <p> {{ User.email }} </p>
+                      <p> {{ user.email }} </p>
                     </b-form-group>
 
                     <b-form-group id="passwordLogin"
                       label="Password"
                       label-for="password">
-                      <b-form-input class="form-control" id="password" type="password" name="password" placeholder="Ingrese su contraseña" autocomplete="current-password" v-model="User.password" v-validate.initial="'required|min:6'" v-bind:class="{'form-control':true, 'error': errors.has('password')}"></b-form-input>
+                      <b-form-input class="form-control" id="password" type="password" name="password" placeholder="Ingrese su contraseña" autocomplete="current-password" v-model="user.password" v-validate.initial="'required|min:6'" v-bind:class="{'form-control':true, 'error': errors.has('password')}"></b-form-input>
 
-                      <p><span>{{ User.password }}</span></p>
+                      <p><span>{{ user.password }}</span></p>
 
                       <span v-show="errors.has('password')" class="text-danger">
                         {{ errors.first('password') }}
@@ -62,8 +62,8 @@
 </template>
 
 <script>
-import {AXIOS} from './http-common'
-// import axios from 'axios'
+// import {AXIOS} from './http-common'
+import axios from 'axios'
 export default {
   name: 'login',
   data () {
@@ -71,33 +71,49 @@ export default {
       forgotPwd: '¿Olvidaste tu contraseña?',
       submitMsg: 'Ingresar',
       createAccount: '¿Nuevo Usuario?',
-      User: {
+      user: {
         email: '',
         password: ''
       }
     }
   },
+  mounted: {
+    isComplete() {
+      return this.user
+    }
+  },
   methods: {
-    validateBeforeSubmit () {
-      // utilizamos el validador de vee validator
+     validateBeforeSubmit () {
       this.$validator.validateAll().then((result) => {
         if (result) {
           alert('form submitted!')
-          console.log('form valido', this.User, result)
-          return
+          console.log('form valido', this.user, result)
+          this.validaeBeforeSubmit();
         }
         alert('correct the form there are errors')
       })
     },
     onSubmit: function () {
-      AXIOS.post(`api/hello`, {
-        email: this.User.email,
-        name: this.User.password
+      //this.validaeBeforeSubmit();
+      var self = this;
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+
+          axios.post('/testsave',self.user)
+          .then((response) => {
+            this.response = response.data
+            console.log('respuesta: ', response.data)
+          })
+        }
+      }) //ends validator
+      /* axios.post('/testsave', {
+        email: this.user.email,
+        password: this.user.password
       })
-        .then((response) => {
-        // this.response = response.data
-          console.log('response', response)
-        })
+      .then((response) => {
+        this.response = response.data
+        console.log('respuesta: ', response.data)
+      }) */
     },
     login: function () {
       this.$router.replace('testpanel')
