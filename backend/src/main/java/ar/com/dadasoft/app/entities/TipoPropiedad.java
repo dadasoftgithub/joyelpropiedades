@@ -59,5 +59,5 @@ public class TipoPropiedad {
         this.estado = estado;
     }
 
-    
+
 }
