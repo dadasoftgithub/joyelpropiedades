@@ -19,7 +19,7 @@ public class TipoPropiedad {
     private String dcPropiedad;
 
     @NotNull
-    @Column(name="estado")
+    //@Column(name="estado")
     @OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="id_estado")
     private Estado estado;
