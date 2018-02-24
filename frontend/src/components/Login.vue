@@ -8,7 +8,7 @@
             <b-card>
               <div class="face front">
                 <div class="panel panel-default">
-                  <b-form class="form-horizontal" @submit.prevent="validateBeforeSubmit">
+                  <b-form class="form-horizontal" @submit.prevent="onSubmit">
                     <figure>
                       <img src="./../assets/house.svg" class="img-thumbnail rounded-circle" alt="logotipo" />
                     </figure>
@@ -28,7 +28,7 @@
                     <b-form-group id="passwordLogin"
                       label="Password"
                       label-for="password">
-                      <b-form-input class="form-control" id="password" type="password" name="password" placeholder="Ingrese su contraseña" autocomplete="current-password" v-model="user.password" v-validate.initial="'required|min:6'" v-bind:class="{'form-control':true, 'error': errors.has('password')}"></b-form-input>
+                      <b-form-input class="form-control" id="password" type="password" name="password" placeholder="Ingrese su contraseña" autocomplete="current-password" v-model="user.password" v-validate.initial="'required|min:6'" v-bind:class="{'error': errors.has('password')}"></b-form-input>
 
                       <p><span>{{ user.password }}</span></p>
 
@@ -40,8 +40,8 @@
                     <b-form-group>
                       <p class="text-right forgot"><a href="">{{ forgotPwd }}</a></p>
 
-                      <b-button type="submit" variant="primary" class="btn-block btn-success" :disabled="errors.any()" @click="validateBeforeSubmit">{{ submitMsg }}</b-button>
-                      <b-button class="btn-block btn-outline-info" type="button" v-on:click="login">connection btn</b-button>
+                      <b-button type="submit" variant="primary" class="btn-block btn-success">{{ submitMsg }}</b-button>
+                      <b-button class="btn-block btn-outline-info" type="submit" v-on:click="login">connection btn</b-button>
 
                       <b-alert variant="success">Bienvenido</b-alert>
                     </b-form-group>
@@ -51,7 +51,12 @@
                       <router-link to="/registro"  class="fliper-btn">{{ createAccount }}</router-link>
                     </a>
                   </b-form>
+                  <!-- <div v-else>
+                    <h6 class="submitted">Form submitted successfully!</h6>
+                  </div> -->
+                  <p>esta es la respuesta de SERVER: <span class="submitted"> {{ response }}</span></p>
                 </div>
+
               </div>
             </b-card>
           </div>
@@ -62,8 +67,8 @@
 </template>
 
 <script>
-// import {AXIOS} from './http-common'
-import axios from 'axios'
+import {AXIOS} from './http-common'
+// import axios from 'axios'
 export default {
   name: 'login',
   data () {
@@ -73,41 +78,31 @@ export default {
       createAccount: '¿Nuevo Usuario?',
       user: {
         email: '',
-        password: ''
+        password: '',
+        formSubmitted: false
       }
     }
   },
   methods: {
-    validateBeforeSubmit () {
-      this.$validator.validateAll().then((result) => {
-        if (result) {
-          alert('form submitted!')
-          console.log('form valido', this.user, result)
-          // this.onSubmit()
-        }
-        alert('correct the form there are errors')
-      })
+
+    onSubmit: function (e) {
+      console.log('this is e ', e)
+      this.$validator.validateAll()
+      if (!this.errors.any()) {
+        this.submitForm()
+      }
     },
-    onSubmit: function () {
-      // this.validaeBeforeSubmit();
-      var self = this
-      this.$validator.validateAll().then((result) => {
-        if (result) {
-          axios.post('/testsave', self.user)
-            .then((response) => {
-              this.response = response.data
-              console.log('respuesta: ', response.data)
-            })
-        }
-      }) // ends validator
-      /*  axios.post('/testsave', {
-        email: this.user.email,
-        password: this.user.password
-      })
-      .then((response) => {
-        this.response = response.data
-        console.log('respuesta: ', response.data)
-      }) */
+    submitForm () {
+      this.formSubmitted = true
+      AXIOS.post(`/testsave`, this.user)
+        .then((response) => {
+          this.response = response.data
+          console.log('respuesta es response.data: ', response.data)
+          console.log('response STATUS', response.status)
+          console.log('response STATUSText', response.statusText)
+          console.log('response HEADERS', response.headers)
+          console.log('response  CONFIG', response.config)
+        })
     },
     login: function () {
       this.$router.replace('testpanel')
@@ -116,6 +111,7 @@ export default {
 }
 </script>
 <style>
+
 form{
   padding: 20px;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 15px 0 rgba(0,0,0,0.12) !important;
@@ -129,6 +125,9 @@ form{
   .form-control.error {
     border-color: #E84444;
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(232,68,68,.6);
+  }
+  .submitted {
+  color: #4fc08d;
   }
 </style>
 
