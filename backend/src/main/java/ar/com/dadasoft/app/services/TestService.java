@@ -20,4 +20,8 @@ public class TestService {
     public List<Test> listarTests() {
         return testRepo.findAll();
     }
+
+    public Test getTest(Long id) {
+        return  testRepo.findOne(id);
+    }
 }

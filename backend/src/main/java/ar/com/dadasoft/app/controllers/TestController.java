@@ -29,7 +29,7 @@ public class TestController {
 //        return model;
 //    }
 
-    @PostMapping(value = "/testsave")
+    @PostMapping(value = "/panel/testsave")
     public String saveIt(@RequestBody Test test){
 
         testService.guardar(test);
@@ -38,13 +38,16 @@ public class TestController {
     }
 
 
-    @GetMapping(value = "/testget")
+    @GetMapping(value = "/panel/testget")
     public List<Test> getIt(){
         return testService.listarTests();
     }
 
 
-
+    @GetMapping(value = "/panel/testgetbyid/{id}")
+    public Test getById(@PathVariable Long id){
+        return testService.getTest(id);
+    }
 
 /*
 
