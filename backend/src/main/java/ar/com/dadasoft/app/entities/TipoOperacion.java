@@ -21,6 +21,10 @@ public class TipoOperacion {
     public TipoOperacion() {
     }
 
+    public TipoOperacion(String dcOperacion) {
+        this.dcOperacion = dcOperacion;
+    }
+
     public TipoOperacion(Long idOperacion, String dcOperacion) {
         this.idOperacion = idOperacion;
         this.dcOperacion = dcOperacion;

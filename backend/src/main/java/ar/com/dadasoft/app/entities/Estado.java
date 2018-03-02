@@ -17,13 +17,23 @@ public class Estado {
     @Column(name="dc_estado")
     private String dcEstado;
 
+    @NotEmpty
+    @Column(name="color")
+    private String color;
+
 
     public Estado() {
     }
 
-    public Estado(Long idEstado, String dcEstado) {
+    public Estado(String dcEstado, String color) {
+        this.dcEstado = dcEstado;
+        this.color = color;
+    }
+
+    public Estado(Long idEstado, String dcEstado, String color) {
         this.idEstado = idEstado;
         this.dcEstado = dcEstado;
+        this.color = color;
     }
 
 
@@ -43,5 +53,11 @@ public class Estado {
         this.dcEstado = dcEstado;
     }
 
+    public String getColor() {
+        return color;
+    }
 
+    public void setColor(String color) {
+        this.color = color;
+    }
 }

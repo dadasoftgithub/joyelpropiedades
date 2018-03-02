@@ -18,17 +18,20 @@ public class Localidad {
     @Column(name="dc_localidad")
     private String dcLocalidad;
 
-    @NotNull
-    //@Column(name="estado")
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="id_estado")
-    private Estado estado;
+    @NotEmpty
+    @Column(name="estado")
+    private String estado;
 
 
     public Localidad() {
     }
 
-    public Localidad(Long idLocalidad, String dcLocalidad, Estado estado) {
+    public Localidad(String dcLocalidad, String estado) {
+        this.dcLocalidad = dcLocalidad;
+        this.estado = estado;
+    }
+
+    public Localidad(Long idLocalidad, String dcLocalidad, String estado) {
         this.idLocalidad = idLocalidad;
         this.dcLocalidad = dcLocalidad;
         this.estado = estado;
@@ -51,11 +54,11 @@ public class Localidad {
         this.dcLocalidad = dcLocalidad;
     }
 
-    public Estado getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(Estado estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 

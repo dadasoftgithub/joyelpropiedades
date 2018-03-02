@@ -1,5 +1,6 @@
 package ar.com.dadasoft.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
@@ -52,11 +53,30 @@ public class Edificio {
     @Column(name="descripcion")
     private String descripcion;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="id_estado")
+    private Estado estado;
+
 
     public Edificio() {
     }
 
-    public Edificio(Long idEdificio, String titulo, Integer sum, Integer piscina, Integer gimnacio, Integer laundry, Integer spa, String direccion, Integer altura, String mapa, String descripcion) {
+    public Edificio(String titulo, Integer sum, Integer piscina, Integer gimnacio, Integer laundry, Integer spa, String direccion, Integer altura, String mapa, String descripcion, Estado estado) {
+        this.titulo = titulo;
+        this.sum = sum;
+        this.piscina = piscina;
+        this.gimnacio = gimnacio;
+        this.laundry = laundry;
+        this.spa = spa;
+        this.direccion = direccion;
+        this.altura = altura;
+        this.mapa = mapa;
+        this.descripcion = descripcion;
+        this.estado = estado;
+    }
+
+    public Edificio(Long idEdificio, String titulo, Integer sum, Integer piscina, Integer gimnacio, Integer laundry, Integer spa, String direccion, Integer altura, String mapa, String descripcion, Estado estado) {
         this.idEdificio = idEdificio;
         this.titulo = titulo;
         this.sum = sum;
@@ -68,6 +88,7 @@ public class Edificio {
         this.altura = altura;
         this.mapa = mapa;
         this.descripcion = descripcion;
+        this.estado = estado;
     }
 
 
@@ -157,5 +178,13 @@ public class Edificio {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 }

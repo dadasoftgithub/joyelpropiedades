@@ -1,6 +1,8 @@
 package ar.com.dadasoft.app.controllers;
 
 import ar.com.dadasoft.app.entities.Test;
+import ar.com.dadasoft.app.entities.TestDireccion;
+import ar.com.dadasoft.app.pojos.TestPojo;
 import ar.com.dadasoft.app.services.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,10 +31,27 @@ public class TestController {
 //        return model;
 //    }
 
-    @PostMapping(value = "/panel/testsave")
+/*    @PostMapping(value = "/panel/testsave")
     public String saveIt(@RequestBody Test test){
 
         testService.guardar(test);
+
+        return "It was saved";
+    }*/
+
+    @PostMapping(value = "/panel/testsave")
+    public String saveIt(@RequestBody TestPojo testPojo){
+        Test t = new Test();
+        TestDireccion d = new TestDireccion();
+
+        d.setCalle(testPojo.getCalle());
+        d.setAltura(testPojo.getAltura());
+
+        t.setEmail(testPojo.getEmail());
+        t.setPassword(testPojo.getPassword());
+        t.setDireccion(d);
+
+        testService.guardar(t);
 
         return "It was saved";
     }

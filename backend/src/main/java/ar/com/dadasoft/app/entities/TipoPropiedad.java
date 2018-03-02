@@ -18,20 +18,17 @@ public class TipoPropiedad {
     @Column(name="dc_propiedad")
     private String dcPropiedad;
 
-    @NotNull
-    //@Column(name="estado")
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="id_estado")
-    private Estado estado;
-
 
     public TipoPropiedad() {
     }
 
-    public TipoPropiedad(Long idPropiedad, String dcPropiedad, Estado estado) {
+    public TipoPropiedad(String dcPropiedad) {
+        this.dcPropiedad = dcPropiedad;
+    }
+
+    public TipoPropiedad(Long idPropiedad, String dcPropiedad) {
         this.idPropiedad = idPropiedad;
         this.dcPropiedad = dcPropiedad;
-        this.estado = estado;
     }
 
 
@@ -49,14 +46,6 @@ public class TipoPropiedad {
 
     public void setDcPropiedad(String dcPropiedad) {
         this.dcPropiedad = dcPropiedad;
-    }
-
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
     }
 
 

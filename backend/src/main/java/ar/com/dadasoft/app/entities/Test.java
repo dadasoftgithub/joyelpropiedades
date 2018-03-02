@@ -19,11 +19,17 @@ public class Test implements Serializable{
 
     //@JsonIgnore
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @OneToOne(fetch=FetchType.LAZY)
+    @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="id_direccion")
     private TestDireccion direccion;
 
     public Test() {
+    }
+
+    public Test(String email, String password, TestDireccion direccion) {
+        this.email = email;
+        this.password = password;
+        this.direccion = direccion;
     }
 
     public Test(Long id, String email, String pass, TestDireccion direccion) {
