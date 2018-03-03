@@ -2,9 +2,11 @@ package ar.com.dadasoft.app.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="test")
@@ -23,20 +25,27 @@ public class Test implements Serializable{
     @JoinColumn(name="id_direccion")
     private TestDireccion direccion;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonManagedReference
+    @OneToMany(mappedBy = "test")
+    private List<TestTel> telefonos;
+
     public Test() {
     }
 
-    public Test(String email, String password, TestDireccion direccion) {
+    public Test(String email, String password, TestDireccion direccion, List<TestTel> telefonos) {
         this.email = email;
         this.password = password;
         this.direccion = direccion;
+        this.telefonos = telefonos;
     }
 
-    public Test(Long id, String email, String pass, TestDireccion direccion) {
+    public Test(Long id, String email, String pass, TestDireccion direccion, List<TestTel> telefonos) {
         this.id = id;
         this.email = email;
         this.password = pass;
         this.direccion = direccion;
+        this.telefonos = telefonos;
     }
 
 
@@ -70,5 +79,13 @@ public class Test implements Serializable{
 
     public void setDireccion(TestDireccion direccion) {
         this.direccion = direccion;
+    }
+
+    public List<TestTel> getTelefonos() {
+        return telefonos;
+    }
+
+    public void setTelefonos(List<TestTel> telefonos) {
+        this.telefonos = telefonos;
     }
 }

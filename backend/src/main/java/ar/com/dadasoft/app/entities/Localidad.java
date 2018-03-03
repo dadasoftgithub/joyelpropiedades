@@ -7,7 +7,9 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "LOCALIDAD")
+
 public class Localidad {
+	
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,23 +20,23 @@ public class Localidad {
     @Column(name="dc_localidad")
     private String dcLocalidad;
 
-    @NotEmpty
-    @Column(name="estado")
-    private String estado;
+    @NotNull
+    @Column(name="es_activa")
+    private Integer esActiva;
 
 
     public Localidad() {
     }
 
-    public Localidad(String dcLocalidad, String estado) {
+    public Localidad(String dcLocalidad, Integer esActiva) {
         this.dcLocalidad = dcLocalidad;
-        this.estado = estado;
+        this.esActiva = esActiva;
     }
 
-    public Localidad(Long idLocalidad, String dcLocalidad, String estado) {
+    public Localidad(Long idLocalidad, String dcLocalidad, Integer esActiva) {
         this.idLocalidad = idLocalidad;
         this.dcLocalidad = dcLocalidad;
-        this.estado = estado;
+        this.esActiva = esActiva;
     }
 
 
@@ -54,14 +56,12 @@ public class Localidad {
         this.dcLocalidad = dcLocalidad;
     }
 
-    public String getEstado() {
-        return estado;
+    public Integer getEsActiva() {
+        return esActiva;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setEsActiva(Integer esActiva) {
+        this.esActiva = esActiva;
     }
-
-
 }
 
