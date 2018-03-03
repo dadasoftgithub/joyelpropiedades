@@ -59,6 +59,11 @@ public class Edificio {
     private Estado estado;
 
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
+    privado ArrayList<EmprendimientoDescrip> desc<
+
+
     public Edificio() {
     }
 
