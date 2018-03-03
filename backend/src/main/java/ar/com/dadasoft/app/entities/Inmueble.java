@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "INMUEBLE")
+@Table(name = "Inmueble")
 public class Inmueble implements Serializable{
 
     @Id
@@ -19,25 +19,23 @@ public class Inmueble implements Serializable{
     @NotNull
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_propiedad")
-    private TipoPropiedad tipoPropiedad;
+    @JoinColumn(name="id_tipo_propiedad")
+    private TipoPropiedad idTipoPropiedad;
 
     @NotNull
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_operacion")
-    private TipoOperacion tipoOperacion;
+    @Column(name="es_venta")
+    private Integer esVenta;
 
     @NotNull
     @Column(name="importe")
-    private Double importe;
+    private Integer importe;
 
     @Column(name="superficie")
     private Integer superficie;
 
     @NotEmpty
-    @Column(name="direccion")
-    private String direccion;
+    @Column(name="calle")
+    private String calle;
 
     @NotNull
     @Column(name="altura")
@@ -47,10 +45,7 @@ public class Inmueble implements Serializable{
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="id_localidad")
-    private Localidad localidad;
-
-    @Column(name="mapa")
-    private String mapa;
+    private Localidad idLocalidad;
 
     @Column(name="descripcion")
     private String descripcion;
@@ -59,64 +54,54 @@ public class Inmueble implements Serializable{
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="id_estado")
-    private Estado estado;
+    private Estado idEstado;
 
-    @Column(name="cant_ambientes")
-    private String cantAmbientes;
+    @Column(name="cant_ambiente")
+    private String cantAmbiente;
 
     @Column(name="piso")
     private String piso;
 
-    @Column(name="dpto")
-    private String dpto;
+    @Column(name="depto")
+    private String depto;
 
     @Column(name="apto_credito")
     private Integer aptoCredito;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_edificio")
-    private Edificio edificio;
-
-
     public Inmueble() {
     }
 
-    public Inmueble(TipoPropiedad tipoPropiedad, TipoOperacion tipoOperacion, Double importe, Integer superficie, String direccion, Integer altura, Localidad localidad, String mapa, String descripcion, Estado estado, String cantAmbientes, String piso, String dpto, Integer aptoCredito, Edificio edificio) {
-        this.tipoPropiedad = tipoPropiedad;
-        this.tipoOperacion = tipoOperacion;
+    public Inmueble(TipoPropiedad idTipoPropiedad, Integer esVenta, Integer importe, Integer superficie, String calle, Integer altura, Localidad idLocalidad, String descripcion, Estado idEstado, String cantAmbiente, String piso, String depto, Integer aptoCredito) {
+        this.idTipoPropiedad = idTipoPropiedad;
+        this.esVenta = esVenta;
         this.importe = importe;
         this.superficie = superficie;
-        this.direccion = direccion;
+        this.calle = calle;
         this.altura = altura;
-        this.localidad = localidad;
-        this.mapa = mapa;
+        this.idLocalidad = idLocalidad;      
         this.descripcion = descripcion;
-        this.estado = estado;
-        this.cantAmbientes = cantAmbientes;
+        this.idEstado = idEstado;
+        this.cantAmbiente = cantAmbiente;
         this.piso = piso;
-        this.dpto = dpto;
+        this.depto = depto;
         this.aptoCredito = aptoCredito;
-        this.edificio = edificio;
     }
 
-    public Inmueble(Long idInmueble, TipoPropiedad tipoPropiedad, TipoOperacion tipoOperacion, Double importe, Integer superficie, String direccion, Integer altura, Localidad localidad, String mapa, String descripcion, Estado estado, String cantAmbientes, String piso, String dpto, Integer aptoCredito, Edificio edificio) {
+    public Inmueble(Long idInmueble, TipoPropiedad idTipoPropiedad, Integer esVenta, Integer importe, Integer superficie, String calle, Integer altura, Localidad idLocalidad, String descripcion, Estado idEstado, String cantAmbiente, String piso, String depto, Integer aptoCredito) {
         this.idInmueble = idInmueble;
-        this.tipoPropiedad = tipoPropiedad;
-        this.tipoOperacion = tipoOperacion;
+        this.idTipoPropiedad = idTipoPropiedad;
+        this.esVenta = esVenta;
         this.importe = importe;
         this.superficie = superficie;
-        this.direccion = direccion;
+        this.calle = calle;
         this.altura = altura;
-        this.localidad = localidad;
-        this.mapa = mapa;
+        this.idLocalidad = idLocalidad;      
         this.descripcion = descripcion;
-        this.estado = estado;
-        this.cantAmbientes = cantAmbientes;
+        this.idEstado = idEstado;
+        this.cantAmbiente = cantAmbiente;
         this.piso = piso;
-        this.dpto = dpto;
+        this.depto = depto;
         this.aptoCredito = aptoCredito;
-        this.edificio = edificio;
     }
 
 
@@ -128,20 +113,20 @@ public class Inmueble implements Serializable{
         this.idInmueble = idInmueble;
     }
 
-    public TipoPropiedad getTipoPropiedad() {
-        return tipoPropiedad;
+    public TipoPropiedad getIdTipoPropiedad() {
+        return idTipoPropiedad;
     }
 
-    public void setTipoPropiedad(TipoPropiedad tipoPropiedad) {
-        this.tipoPropiedad = tipoPropiedad;
+    public void setIdTipoPropiedad(TipoPropiedad idTipoPropiedad) {
+        this.idTipoPropiedad = idTipoPropiedad;
     }
 
-    public TipoOperacion getTipoOperacion() {
-        return tipoOperacion;
+    public Integer getEsVenta() {
+        return esVenta;
     }
 
-    public void setTipoOperacion(TipoOperacion tipoOperacion) {
-        this.tipoOperacion = tipoOperacion;
+    public void setEsVenta(Integer esVenta) {
+        this.esVenta = esVenta;
     }
 
     public Double getImporte() {
@@ -160,12 +145,12 @@ public class Inmueble implements Serializable{
         this.superficie = superficie;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getCalle() {
+        return calle;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setCalle(String calle) {
+        this.calle = calle;
     }
 
     public Integer getAltura() {
@@ -176,20 +161,12 @@ public class Inmueble implements Serializable{
         this.altura = altura;
     }
 
-    public Localidad getLocalidad() {
-        return localidad;
+    public Localidad getIdLocalidad() {
+        return idLocalidad;
     }
 
-    public void setLocalidad(Localidad localidad) {
-        this.localidad = localidad;
-    }
-
-    public String getMapa() {
-        return mapa;
-    }
-
-    public void setMapa(String mapa) {
-        this.mapa = mapa;
+    public void setIdLocalidad(Localidad idLocalidad) {
+        this.idLocalidad = idLocalidad;
     }
 
     public String getDescripcion() {
@@ -200,20 +177,20 @@ public class Inmueble implements Serializable{
         this.descripcion = descripcion;
     }
 
-    public Estado getEstado() {
-        return estado;
+    public Estado getIdEstado() {
+        return idEstado;
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    public void setIdEstado(Estado idEstado) {
+        this.idEstado = idEstado;
     }
 
-    public String getCantAmbientes() {
-        return cantAmbientes;
+    public String getCantAmbiente() {
+        return cantAmbiente;
     }
 
-    public void setCantAmbientes(String cantAmbientes) {
-        this.cantAmbientes = cantAmbientes;
+    public void setCantAmbiente(String cantAmbiente) {
+        this.cantAmbiente = cantAmbiente;
     }
 
     public String getPiso() {
@@ -224,12 +201,12 @@ public class Inmueble implements Serializable{
         this.piso = piso;
     }
 
-    public String getDpto() {
-        return dpto;
+    public String getDepto() {
+        return depto;
     }
 
-    public void setDpto(String dpto) {
-        this.dpto = dpto;
+    public void setDepto(String depto) {
+        this.depto = depto;
     }
 
     public Integer getAptoCredito() {
@@ -240,11 +217,4 @@ public class Inmueble implements Serializable{
         this.aptoCredito = aptoCredito;
     }
 
-    public Edificio getEdificio() {
-        return edificio;
-    }
-
-    public void setEdificio(Edificio edificio) {
-        this.edificio = edificio;
-    }
 }

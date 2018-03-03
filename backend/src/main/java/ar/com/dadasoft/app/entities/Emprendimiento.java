@@ -8,13 +8,13 @@ import org.springframework.format.annotation.NumberFormat.Style;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "EDIFICIO")
-public class Edificio {
+@Table(name = "Emprendimiento")
+public class Emprendimiento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id_edificio")
-    private Long idEdificio;
+    @Column(name="id_emprendimiento")
+    private Long idEmprendimiento;
 
     @NotEmpty
     @Column(name="titulo")
@@ -28,66 +28,51 @@ public class Edificio {
     @NumberFormat(style = Style.NUMBER)
     private Integer piscina;
 
-    @Column(name="gimnacio")
+    @Column(name="gimnasio")
     @NumberFormat(style = Style.NUMBER)
-    private Integer gimnacio;
+    private Integer gimnasio;
 
     @Column(name="laundry")
     @NumberFormat(style = Style.NUMBER)
     private Integer laundry;
 
-    @Column(name="spa")
-    @NumberFormat(style = Style.NUMBER)
-    private Integer spa;
-
-    @Column(name="direccion")
-    private String direccion;
+    @Column(name="calle")
+    private String calle;
 
     @Column(name="altura")
     @NumberFormat(style = Style.NUMBER)
     private Integer altura;
-
-    @Column(name="mapa")
-    private String mapa;
-
-    @Column(name="descripcion")
-    private String descripcion;
-
+    
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="id_estado")
     private Estado estado;
 
 
-    public Edificio() {
+    public Emprendimiento() {
     }
 
-    public Edificio(String titulo, Integer sum, Integer piscina, Integer gimnacio, Integer laundry, Integer spa, String direccion, Integer altura, String mapa, String descripcion, Estado estado) {
+    public Emprendimiento(String titulo, Integer sum, Integer piscina, Integer gimnasio, Integer laundry, String calle, Integer altura, Estado estado) {
         this.titulo = titulo;
         this.sum = sum;
         this.piscina = piscina;
-        this.gimnacio = gimnacio;
+        this.gimnasio = gimnasio;
         this.laundry = laundry;
-        this.spa = spa;
-        this.direccion = direccion;
+        this.calle = calle;
         this.altura = altura;
-        this.mapa = mapa;
-        this.descripcion = descripcion;
         this.estado = estado;
     }
 
-    public Edificio(Long idEdificio, String titulo, Integer sum, Integer piscina, Integer gimnacio, Integer laundry, Integer spa, String direccion, Integer altura, String mapa, String descripcion, Estado estado) {
+    public Emprendimiento(Long idEdificio, String titulo, Integer sum, Integer piscina, Integer gimnasio, Integer laundry, String calle, Integer altura, Estado estado) {
         this.idEdificio = idEdificio;
         this.titulo = titulo;
         this.sum = sum;
         this.piscina = piscina;
-        this.gimnacio = gimnacio;
+        this.gimnasio = gimnasio;
         this.laundry = laundry;
         this.spa = spa;
-        this.direccion = direccion;
+        this.calle = calle;
         this.altura = altura;
-        this.mapa = mapa;
-        this.descripcion = descripcion;
         this.estado = estado;
     }
 
@@ -124,11 +109,11 @@ public class Edificio {
         this.piscina = piscina;
     }
 
-    public Integer getGimnacio() {
+    public Integer getGimnasio() {
         return gimnacio;
     }
 
-    public void setGimnacio(Integer gimnacio) {
+    public void setGimnasio(Integer gimnasio) {
         this.gimnacio = gimnacio;
     }
 
@@ -140,20 +125,12 @@ public class Edificio {
         this.laundry = laundry;
     }
 
-    public Integer getSpa() {
-        return spa;
+    public String getCalle() {
+        return calle;
     }
 
-    public void setSpa(Integer spa) {
-        this.spa = spa;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setCalle(String calle) {
+        this.calle = calle;
     }
 
     public Integer getAltura() {
@@ -162,22 +139,6 @@ public class Edificio {
 
     public void setAltura(Integer altura) {
         this.altura = altura;
-    }
-
-    public String getMapa() {
-        return mapa;
-    }
-
-    public void setMapa(String mapa) {
-        this.mapa = mapa;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
     public Estado getEstado() {
