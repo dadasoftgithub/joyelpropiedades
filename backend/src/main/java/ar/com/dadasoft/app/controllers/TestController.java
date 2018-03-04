@@ -50,6 +50,7 @@ public class TestController {
         t.setEmail(testPojo.getEmail());
         t.setPassword(testPojo.getPassword());
         t.setDireccion(d);
+        t.setTelefonos(testPojo.getTelefonos());
 
         testService.guardar(t);
 
