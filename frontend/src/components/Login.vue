@@ -41,7 +41,7 @@
                       <p class="text-right forgot"><a href="">{{ forgotPwd }}</a></p>
 
                       <b-button type="submit" variant="primary" class="btn-block btn-success">{{ submitMsg }}</b-button>
-                      <b-button class="btn-block btn-outline-info" type="submit" v-on:click="login">connection btn</b-button>
+                      <b-button class="btn-block btn-outline-info" type="submit" v-on:click="login">test panel btn</b-button>
 
                       <b-alert variant="success">Bienvenido</b-alert>
                     </b-form-group>
@@ -54,7 +54,7 @@
                   <!-- <div v-else>
                     <h6 class="submitted">Form submitted successfully!</h6>
                   </div> -->
-                  <p>esta es la respuesta de SERVER: <span class="submitted"> {{ response }}</span></p>
+
                 </div>
 
               </div>
@@ -62,13 +62,15 @@
           </div>
         </b-col>
       </b-row>
+
     </b-container>
   </div>
 </template>
 
+// import axios from 'axios'
 <script>
 import {AXIOS} from './http-common'
-// import axios from 'axios'
+// import {Logo} from './common'
 export default {
   name: 'login',
   data () {
@@ -94,7 +96,7 @@ export default {
     },
     submitForm () {
       this.formSubmitted = true
-      AXIOS.post(`/testsave`, this.user)
+      AXIOS.post(`panel/testsave`, this.user)
         .then((response) => {
           this.response = response.data
           console.log('respuesta es response.data: ', response.data)
@@ -120,7 +122,13 @@ form{
   border-radius: 0px;
 }
   .card {
+    background-color: #f5f6f7;
     border: none;
+    border-radius: 0;
+  }
+  .form-control{
+    border: 1px solid #ccc;
+    border-radius: 1px;
   }
   .form-control.error {
     border-color: #E84444;
