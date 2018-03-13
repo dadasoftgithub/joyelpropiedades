@@ -8,6 +8,7 @@ import Registro from '@/components/Registro'
 import TestPanel from '@/components/TestPanel'
 import AppHeader from '@/components/AppHeader'
 import Ficha from '@/components/Ficha'
+import Gmap1 from '@/components/Gmap1'
 Vue.use(Router)
 
 export default new Router({
@@ -52,11 +53,11 @@ export default new Router({
       path: '/ficha',
       name: 'Ficha',
       component: Ficha
+    },
+    {
+      path: '/mapa',
+      name: 'google-map',
+      component: Gmap1
     }
-    /*     {
-      path: '/bootstrap',
-      name: 'Bootstrap',
-      component: Bootstrap
-    } */
   ]
 })
