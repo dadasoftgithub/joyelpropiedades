@@ -19,6 +19,11 @@ public class TestDireccion implements Serializable{
     public TestDireccion() {
     }
 
+    public TestDireccion(String calle, Integer altura) {
+        this.calle = calle;
+        this.altura = altura;
+    }
+
     public TestDireccion(Long idDireccion, String calle, Integer altura) {
         this.idDireccion = idDireccion;
         this.calle = calle;

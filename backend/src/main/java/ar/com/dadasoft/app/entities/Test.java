@@ -1,6 +1,5 @@
 package ar.com.dadasoft.app.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -19,33 +18,45 @@ public class Test implements Serializable{
     private String email;
     private String password;
 
-    //@JsonIgnore
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="id_direccion")
     private TestDireccion direccion;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="id_estado")
+    private Estado estado;
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JsonManagedReference
     @OneToMany(mappedBy = "test")
     private List<TestTel> telefonos;
 
+    @Column(name="descripcion")
+    private String descripcion;
+
+
     public Test() {
     }
 
-    public Test(String email, String password, TestDireccion direccion, List<TestTel> telefonos) {
+    public Test(String email, String password, TestDireccion direccion, Estado estado, List<TestTel> telefonos, String descripcion) {
         this.email = email;
         this.password = password;
         this.direccion = direccion;
+        this.estado = estado;
         this.telefonos = telefonos;
+        this.descripcion = descripcion;
     }
 
-    public Test(Long id, String email, String pass, TestDireccion direccion, List<TestTel> telefonos) {
+    public Test(Long id, String email, String pass, TestDireccion direccion, Estado estado, List<TestTel> telefonos, String descripcion) {
         this.id = id;
         this.email = email;
         this.password = pass;
         this.direccion = direccion;
+        this.estado = estado;
         this.telefonos = telefonos;
+        this.descripcion = descripcion;
     }
 
 
@@ -81,11 +92,27 @@ public class Test implements Serializable{
         this.direccion = direccion;
     }
 
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
     public List<TestTel> getTelefonos() {
         return telefonos;
     }
 
     public void setTelefonos(List<TestTel> telefonos) {
         this.telefonos = telefonos;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }

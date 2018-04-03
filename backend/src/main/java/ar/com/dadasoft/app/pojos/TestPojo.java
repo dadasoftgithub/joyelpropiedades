@@ -10,17 +10,21 @@ public class TestPojo {
     private String password;
     private String calle;
     private Integer altura;
+    private String descripcion;
+    private Long estado;
     private List<TestTel> telefonos;
 
 
     public TestPojo() {
     }
 
-    public TestPojo(String email, String password, String calle, Integer altura, List<TestTel> telefonos) {
+    public TestPojo(String email, String password, String calle, Integer altura, String descripcion, Long estado, List<TestTel> telefonos) {
         this.email = email;
         this.password = password;
         this.calle = calle;
         this.altura = altura;
+        this.descripcion = descripcion;
+        this.estado = estado;
         this.telefonos = telefonos;
     }
 
@@ -55,6 +59,22 @@ public class TestPojo {
 
     public void setAltura(Integer altura) {
         this.altura = altura;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Long getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Long estado) {
+        this.estado = estado;
     }
 
     public List<TestTel> getTelefonos() {

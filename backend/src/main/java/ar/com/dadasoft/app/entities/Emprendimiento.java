@@ -43,15 +43,18 @@ public class Emprendimiento {
     @Column(name="altura")
     @NumberFormat(style = Style.NUMBER)
     private Integer altura;
+
+    @Column(name="descripcion")
+    private String descripcion;
     
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="id_estado")
     private Estado estado;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+/*    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(mappedBy = "emprendimiento")
-    private List<EmprendimientoDescripcion> descripciones;
+    private List<EmprendimientoDescripcion> descripciones;*/
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(mappedBy = "emprendimiento")
@@ -61,7 +64,7 @@ public class Emprendimiento {
     public Emprendimiento() {
     }
 
-    public Emprendimiento(String titulo, Integer sum, Integer piscina, Integer gimnasio, Integer laundry, String calle, Integer altura, Estado estado, List<EmprendimientoDescripcion> descripciones) {
+    public Emprendimiento(String titulo, Integer sum, Integer piscina, Integer gimnasio, Integer laundry, String calle, Integer altura, String descripcion, Estado estado) {
         this.titulo = titulo;
         this.sum = sum;
         this.piscina = piscina;
@@ -69,11 +72,11 @@ public class Emprendimiento {
         this.laundry = laundry;
         this.calle = calle;
         this.altura = altura;
+        this.descripcion = descripcion;
         this.estado = estado;
-        this.descripciones = descripciones;
     }
 
-    public Emprendimiento(Long idEmprendimiento, String titulo, Integer sum, Integer piscina, Integer gimnasio, Integer laundry, String calle, Integer altura, Estado estado, List<EmprendimientoDescripcion> descripciones) {
+    public Emprendimiento(Long idEmprendimiento, String titulo, Integer sum, Integer piscina, Integer gimnasio, Integer laundry, String calle, Integer altura, String descripcion, Estado estado) {
         this.idEmprendimiento = idEmprendimiento;
         this.titulo = titulo;
         this.sum = sum;
@@ -82,8 +85,8 @@ public class Emprendimiento {
         this.laundry = laundry;
         this.calle = calle;
         this.altura = altura;
+        this.descripcion = descripcion;
         this.estado = estado;
-        this.descripciones = descripciones;
     }
 
 
@@ -151,6 +154,14 @@ public class Emprendimiento {
         this.altura = altura;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public Estado getEstado() {
         return estado;
     }
@@ -159,11 +170,11 @@ public class Emprendimiento {
         this.estado = estado;
     }
 
-    public List<EmprendimientoDescripcion> getDescripciones() {
-        return descripciones;
+    public List<Foto> getFotos() {
+        return fotos;
     }
 
-    public void setDescripciones(List<EmprendimientoDescripcion> descripciones) {
-        this.descripciones = descripciones;
+    public void setFotos(List<Foto> fotos) {
+        this.fotos = fotos;
     }
 }

@@ -3,7 +3,6 @@ package ar.com.dadasoft.app.entities;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Tipo_Propiedad")
@@ -11,41 +10,41 @@ public class TipoPropiedad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id_propiedad")
-    private Long idPropiedad;
+    @Column(name="id_tipo_propiedad")
+    private Long idTipoPropiedad;
 
     @NotEmpty
-    @Column(name="dc_propiedad")
-    private String dcPropiedad;
+    @Column(name="dc_tipo_propiedad")
+    private String dcTipoPropiedad;
 
 
     public TipoPropiedad() {
     }
 
-    public TipoPropiedad(String dcPropiedad) {
-        this.dcPropiedad = dcPropiedad;
+    public TipoPropiedad(String dcTipoPropiedad) {
+        this.dcTipoPropiedad = dcTipoPropiedad;
     }
 
-    public TipoPropiedad(Long idPropiedad, String dcPropiedad) {
-        this.idPropiedad = idPropiedad;
-        this.dcPropiedad = dcPropiedad;
+    public TipoPropiedad(Long idTipoPropiedad, String dcTipoPropiedad) {
+        this.idTipoPropiedad = idTipoPropiedad;
+        this.dcTipoPropiedad = dcTipoPropiedad;
     }
 
 
-    public Long getIdPropiedad() {
-        return idPropiedad;
+    public Long getIdTipoPropiedad() {
+        return idTipoPropiedad;
     }
 
-    public void setIdPropiedad(Long idPropiedad) {
-        this.idPropiedad = idPropiedad;
+    public void setIdTipoPropiedad(Long idTipoPropiedad) {
+        this.idTipoPropiedad = idTipoPropiedad;
     }
 
-    public String getDcPropiedad() {
-        return dcPropiedad;
+    public String getDcTipoPropiedad() {
+        return dcTipoPropiedad;
     }
 
-    public void setDcPropiedad(String dcPropiedad) {
-        this.dcPropiedad = dcPropiedad;
+    public void setDcTipoPropiedad(String dcTipoPropiedad) {
+        this.dcTipoPropiedad = dcTipoPropiedad;
     }
 
 

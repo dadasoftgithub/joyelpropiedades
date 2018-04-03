@@ -21,7 +21,7 @@ public class Inmueble implements Serializable{
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="id_tipo_propiedad")
-    private TipoPropiedad idTipoPropiedad;
+    private TipoPropiedad tipoPropiedad;
 
     @NotNull
     @Column(name="es_venta")
@@ -46,7 +46,7 @@ public class Inmueble implements Serializable{
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="id_localidad")
-    private Localidad idLocalidad;
+    private Localidad localidad;
 
     @Column(name="descripcion")
     private String descripcion;
@@ -55,7 +55,7 @@ public class Inmueble implements Serializable{
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="id_estado")
-    private Estado idEstado;
+    private Estado estado;
 
     @Column(name="cant_ambiente")
     private String cantAmbiente;
@@ -77,16 +77,16 @@ public class Inmueble implements Serializable{
     public Inmueble() {
     }
 
-    public Inmueble(TipoPropiedad idTipoPropiedad, Integer esVenta, Integer importe, Integer superficie, String calle, Integer altura, Localidad idLocalidad, String descripcion, Estado idEstado, String cantAmbiente, String piso, String depto, Integer aptoCredito, List<Foto> fotos) {
-        this.idTipoPropiedad = idTipoPropiedad;
+    public Inmueble(TipoPropiedad tipoPropiedad, Integer esVenta, Integer importe, Integer superficie, String calle, Integer altura, Localidad localidad, String descripcion, Estado estado, String cantAmbiente, String piso, String depto, Integer aptoCredito, List<Foto> fotos) {
+        this.tipoPropiedad = tipoPropiedad;
         this.esVenta = esVenta;
         this.importe = importe;
         this.superficie = superficie;
         this.calle = calle;
         this.altura = altura;
-        this.idLocalidad = idLocalidad;
+        this.localidad = localidad;
         this.descripcion = descripcion;
-        this.idEstado = idEstado;
+        this.estado = estado;
         this.cantAmbiente = cantAmbiente;
         this.piso = piso;
         this.depto = depto;
@@ -94,17 +94,17 @@ public class Inmueble implements Serializable{
         this.fotos = fotos;
     }
 
-    public Inmueble(Long idInmueble, TipoPropiedad idTipoPropiedad, Integer esVenta, Integer importe, Integer superficie, String calle, Integer altura, Localidad idLocalidad, String descripcion, Estado idEstado, String cantAmbiente, String piso, String depto, Integer aptoCredito, List<Foto> fotos) {
+    public Inmueble(Long idInmueble, TipoPropiedad tipoPropiedad, Integer esVenta, Integer importe, Integer superficie, String calle, Integer altura, Localidad localidad, String descripcion, Estado estado, String cantAmbiente, String piso, String depto, Integer aptoCredito, List<Foto> fotos) {
         this.idInmueble = idInmueble;
-        this.idTipoPropiedad = idTipoPropiedad;
+        this.tipoPropiedad = tipoPropiedad;
         this.esVenta = esVenta;
         this.importe = importe;
         this.superficie = superficie;
         this.calle = calle;
         this.altura = altura;
-        this.idLocalidad = idLocalidad;
+        this.localidad = localidad;
         this.descripcion = descripcion;
-        this.idEstado = idEstado;
+        this.estado = estado;
         this.cantAmbiente = cantAmbiente;
         this.piso = piso;
         this.depto = depto;
@@ -121,12 +121,12 @@ public class Inmueble implements Serializable{
         this.idInmueble = idInmueble;
     }
 
-    public TipoPropiedad getIdTipoPropiedad() {
-        return idTipoPropiedad;
+    public TipoPropiedad getTipoPropiedad() {
+        return tipoPropiedad;
     }
 
-    public void setIdTipoPropiedad(TipoPropiedad idTipoPropiedad) {
-        this.idTipoPropiedad = idTipoPropiedad;
+    public void setTipoPropiedad(TipoPropiedad tipoPropiedad) {
+        this.tipoPropiedad = tipoPropiedad;
     }
 
     public Integer getEsVenta() {
@@ -169,12 +169,12 @@ public class Inmueble implements Serializable{
         this.altura = altura;
     }
 
-    public Localidad getIdLocalidad() {
-        return idLocalidad;
+    public Localidad getLocalidad() {
+        return localidad;
     }
 
-    public void setIdLocalidad(Localidad idLocalidad) {
-        this.idLocalidad = idLocalidad;
+    public void setLocalidad(Localidad localidad) {
+        this.localidad = localidad;
     }
 
     public String getDescripcion() {
@@ -185,12 +185,12 @@ public class Inmueble implements Serializable{
         this.descripcion = descripcion;
     }
 
-    public Estado getIdEstado() {
-        return idEstado;
+    public Estado getEstado() {
+        return estado;
     }
 
-    public void setIdEstado(Estado idEstado) {
-        this.idEstado = idEstado;
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public String getCantAmbiente() {
