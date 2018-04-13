@@ -1,0 +1,15 @@
+ar/com/dadasoft/app/entities/TipoPropiedad.class
+ar/com/dadasoft/app/repositories/TestRepo.class
+ar/com/dadasoft/app/entities/Test.class
+ar/com/dadasoft/app/entities/Localidad.class
+ar/com/dadasoft/app/controllers/TestController.class
+ar/com/dadasoft/app/AppApplication.class
+ar/com/dadasoft/app/pojos/TestPojo.class
+ar/com/dadasoft/app/entities/Estado.class
+ar/com/dadasoft/app/entities/TestTel.class
+ar/com/dadasoft/app/entities/EmprendimientoDescripcion.class
+ar/com/dadasoft/app/services/TestService.class
+ar/com/dadasoft/app/entities/Foto.class
+ar/com/dadasoft/app/entities/Emprendimiento.class
+ar/com/dadasoft/app/entities/Inmueble.class
+ar/com/dadasoft/app/entities/TestDireccion.class

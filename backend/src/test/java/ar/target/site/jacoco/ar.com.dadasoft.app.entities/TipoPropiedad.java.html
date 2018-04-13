@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TipoPropiedad.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">backend</a> &gt; <a href="index.source.html" class="el_package">ar.com.dadasoft.app.entities</a> &gt; <span class="el_source">TipoPropiedad.java</span></div><h1>TipoPropiedad.java</h1><pre class="source lang-java linenums">package ar.com.dadasoft.app.entities;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = &quot;Tipo_Propiedad&quot;)
+public class TipoPropiedad {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name=&quot;id_propiedad&quot;)
+    private Long idPropiedad;
+
+    @NotEmpty
+    @Column(name=&quot;dc_propiedad&quot;)
+    private String dcPropiedad;
+
+
+<span class="fc" id="L22">    public TipoPropiedad() {</span>
+<span class="fc" id="L23">    }</span>
+
+<span class="nc" id="L25">    public TipoPropiedad(String dcPropiedad) {</span>
+<span class="nc" id="L26">        this.dcPropiedad = dcPropiedad;</span>
+<span class="nc" id="L27">    }</span>
+
+<span class="nc" id="L29">    public TipoPropiedad(Long idPropiedad, String dcPropiedad) {</span>
+<span class="nc" id="L30">        this.idPropiedad = idPropiedad;</span>
+<span class="nc" id="L31">        this.dcPropiedad = dcPropiedad;</span>
+<span class="nc" id="L32">    }</span>
+
+
+    public Long getIdPropiedad() {
+<span class="nc" id="L36">        return idPropiedad;</span>
+    }
+
+    public void setIdPropiedad(Long idPropiedad) {
+<span class="nc" id="L40">        this.idPropiedad = idPropiedad;</span>
+<span class="nc" id="L41">    }</span>
+
+    public String getDcPropiedad() {
+<span class="nc" id="L44">        return dcPropiedad;</span>
+    }
+
+    public void setDcPropiedad(String dcPropiedad) {
+<span class="nc" id="L48">        this.dcPropiedad = dcPropiedad;</span>
+<span class="nc" id="L49">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

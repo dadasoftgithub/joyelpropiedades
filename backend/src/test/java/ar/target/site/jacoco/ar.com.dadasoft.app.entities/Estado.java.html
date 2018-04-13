@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Estado.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">backend</a> &gt; <a href="index.source.html" class="el_package">ar.com.dadasoft.app.entities</a> &gt; <span class="el_source">Estado.java</span></div><h1>Estado.java</h1><pre class="source lang-java linenums">package ar.com.dadasoft.app.entities;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = &quot;Estado&quot;)
+public class Estado {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name=&quot;id_estado&quot;)
+    private Long idEstado;
+
+    @NotEmpty
+    @Column(name=&quot;dc_estado&quot;)
+    private String dcEstado;
+
+    @NotEmpty
+    @Column(name=&quot;color&quot;)
+    private String color;
+
+
+<span class="fc" id="L25">    public Estado() {</span>
+<span class="fc" id="L26">    }</span>
+
+<span class="nc" id="L28">    public Estado(String dcEstado, String color) {</span>
+<span class="nc" id="L29">        this.dcEstado = dcEstado;</span>
+<span class="nc" id="L30">        this.color = color;</span>
+<span class="nc" id="L31">    }</span>
+
+<span class="nc" id="L33">    public Estado(Long idEstado, String dcEstado, String color) {</span>
+<span class="nc" id="L34">        this.idEstado = idEstado;</span>
+<span class="nc" id="L35">        this.dcEstado = dcEstado;</span>
+<span class="nc" id="L36">        this.color = color;</span>
+<span class="nc" id="L37">    }</span>
+
+
+    public Long getIdEstado() {
+<span class="nc" id="L41">        return idEstado;</span>
+    }
+
+    public void setIdEstado(Long idEstado) {
+<span class="nc" id="L45">        this.idEstado = idEstado;</span>
+<span class="nc" id="L46">    }</span>
+
+    public String getDcEstado() {
+<span class="nc" id="L49">        return dcEstado;</span>
+    }
+
+    public void setDcEstado(String dcEstado) {
+<span class="nc" id="L53">        this.dcEstado = dcEstado;</span>
+<span class="nc" id="L54">    }</span>
+
+    public String getColor() {
+<span class="nc" id="L57">        return color;</span>
+    }
+
+    public void setColor(String color) {
+<span class="nc" id="L61">        this.color = color;</span>
+<span class="nc" id="L62">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>
