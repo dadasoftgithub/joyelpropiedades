@@ -2,7 +2,6 @@ package ar.com.dadasoft.app.services;
 
 import ar.com.dadasoft.app.entities.*;
 import ar.com.dadasoft.app.pojos.InmueblePojo;
-import ar.com.dadasoft.app.pojos.TestPojo;
 import ar.com.dadasoft.app.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +32,8 @@ public class InmuebleService {
 
     public Inmueble guardarInmueble(InmueblePojo inmueblePojo){
 
+        Integer aptoCredito = 0;
+
         //TODO - validar que no sean nulos los campos!!
         TipoPropiedad tipoPropiedad = tipoPropiedadRepo.findOne(inmueblePojo.getIdTipoPropiedad());
         Localidad localidad = localidadRepo.findByIdLocalidadAndEsActiva(inmueblePojo.getIdLocalidad(), 1);
@@ -51,7 +52,12 @@ public class InmuebleService {
         inmueble.setCantAmbiente(inmueblePojo.getCantAmbiente());
         inmueble.setPiso(inmueblePojo.getPiso());
         inmueble.setDepto(inmueblePojo.getDepto());
-        inmueble.setAptoCredito(inmueblePojo.getAptoCredito());
+
+        if (inmueblePojo.isAptoCredito()) {
+            aptoCredito = 1;
+        }
+
+        inmueble.setAptoCredito(aptoCredito);
 
         inmuebleRepo.save(inmueble);
 
@@ -59,6 +65,8 @@ public class InmuebleService {
     }
 
     public boolean modificarInmueble(Long idInmueble, InmueblePojo inmueblePojo){
+
+        Integer aptoCredito = 0;
 
         //TODO - validar que no sean nulos los campos!!
         Inmueble inmueble = inmuebleRepo.findOne(idInmueble);
@@ -78,7 +86,12 @@ public class InmuebleService {
         inmueble.setCantAmbiente(inmueblePojo.getCantAmbiente());
         inmueble.setPiso(inmueblePojo.getPiso());
         inmueble.setDepto(inmueblePojo.getDepto());
-        inmueble.setAptoCredito(inmueblePojo.getAptoCredito());
+
+        if (inmueblePojo.isAptoCredito()) {
+            aptoCredito = 1;
+        }
+
+        inmueble.setAptoCredito(aptoCredito);
 
         inmuebleRepo.save(inmueble);
 

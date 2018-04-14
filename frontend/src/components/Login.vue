@@ -41,16 +41,17 @@
                       <p class="text-right forgot"><a href="">{{ forgotPwd }}</a></p>
 
                       <b-button type="submit" variant="primary" class="btn-block btn-success">{{ submitMsg }}</b-button>
-                      <b-button class="btn-block btn-outline-info" type="submit" v-on:click="login">test panel btn</b-button>
 
                       <b-alert variant="success">Bienvenido</b-alert>
                     </b-form-group>
 
+                    <dada-btn class="btn-block" :onClick="login">test panel btn</dada-btn>
                     <hr>
                     <a class="text-center cursor">
                       <router-link to="/registro"  class="fliper-btn">{{ createAccount }}</router-link>
                     </a>
                   </b-form>
+
                   <!-- <div v-else>
                     <h6 class="submitted">Form submitted successfully!</h6>
                   </div> -->
@@ -70,6 +71,7 @@
 // import axios from 'axios'
 <script>
 import {AXIOS} from './http-common'
+import Button from './Button'
 // import {Logo} from './common'
 export default {
   name: 'login',
@@ -88,7 +90,7 @@ export default {
   methods: {
 
     onSubmit: function (e) {
-      console.log('this is e ', e)
+      console.log('this is event ', e)
       this.$validator.validateAll()
       if (!this.errors.any()) {
         this.submitForm()
@@ -109,6 +111,9 @@ export default {
     login: function () {
       this.$router.replace('testpanel')
     }
+  },
+  components: {
+    'dada-btn': Button
   }
 }
 </script>

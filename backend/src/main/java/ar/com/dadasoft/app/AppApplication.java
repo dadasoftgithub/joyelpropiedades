@@ -14,15 +14,15 @@ public class AppApplication {
 		SpringApplication.run(AppApplication.class, args);
 	}
 
-/*	// Enable CORS globally
+	// Enable CORS globally
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurerAdapter() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/panel/*").allowedOrigins("http://localhost:8080");
+				registry.addMapping("/panel/*").allowedOrigins("http://192.168.0.102:8080");
 			}
 		};
-	}*/
+	}
 
 }

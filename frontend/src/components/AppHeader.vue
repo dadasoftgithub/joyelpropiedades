@@ -32,7 +32,7 @@ export default {
 </script>
 <style>
 .appHeader{
-  background: #F5F6F7;
+  background: var(--header-bg);
   margin-bottom: 5%;
   box-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
