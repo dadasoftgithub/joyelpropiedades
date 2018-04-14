@@ -3,48 +3,42 @@ package ar.com.dadasoft.app.pojos;
 
 public class InmueblePojo {
 
-    private Long idTipoPropiedad;  //TipoPropiedad
     private Integer esVenta;
-    private Integer importe;
+    private Long idTipoPropiedad;  //TipoPropiedad
     private Integer superficie;
-    private String calle;
-    private Integer altura;
-    private Long idLocalidad;     //Localidad
-    private String descripcion;
-    private Long idEstado;        //Estado
     private String cantAmbiente;
     private String piso;
     private String depto;
-    private Integer aptoCredito;
+    private Long idEstado;        //Estado
+    private String calle;
+    private Integer altura;
+    private Long idLocalidad;     //Localidad
+    private boolean aptoCredito;
+    private Integer importe;
+    private String descripcion;
+
 
 
     public InmueblePojo() {
     }
 
-    public InmueblePojo(Long idTipoPropiedad, Integer esVenta, Integer importe, Integer superficie, String calle, Integer altura, Long idLocalidad, String descripcion, Long idEstado, String cantAmbiente, String piso, String depto, Integer aptoCredito) {
-        this.idTipoPropiedad = idTipoPropiedad;
+    public InmueblePojo(Integer esVenta, Long idTipoPropiedad, Integer superficie, String cantAmbiente, String piso, String depto, Long idEstado, String calle, Integer altura, Long idLocalidad, boolean aptoCredito, Integer importe, String descripcion) {
         this.esVenta = esVenta;
-        this.importe = importe;
+        this.idTipoPropiedad = idTipoPropiedad;
         this.superficie = superficie;
-        this.calle = calle;
-        this.altura = altura;
-        this.idLocalidad = idLocalidad;
-        this.descripcion = descripcion;
-        this.idEstado = idEstado;
         this.cantAmbiente = cantAmbiente;
         this.piso = piso;
         this.depto = depto;
+        this.idEstado = idEstado;
+        this.calle = calle;
+        this.altura = altura;
+        this.idLocalidad = idLocalidad;
         this.aptoCredito = aptoCredito;
+        this.importe = importe;
+        this.descripcion = descripcion;
     }
 
 
-    public Long getIdTipoPropiedad() {
-        return idTipoPropiedad;
-    }
-
-    public void setIdTipoPropiedad(Long idTipoPropiedad) {
-        this.idTipoPropiedad = idTipoPropiedad;
-    }
 
     public Integer getEsVenta() {
         return esVenta;
@@ -54,12 +48,12 @@ public class InmueblePojo {
         this.esVenta = esVenta;
     }
 
-    public Integer getImporte() {
-        return importe;
+    public Long getIdTipoPropiedad() {
+        return idTipoPropiedad;
     }
 
-    public void setImporte(Integer importe) {
-        this.importe = importe;
+    public void setIdTipoPropiedad(Long idTipoPropiedad) {
+        this.idTipoPropiedad = idTipoPropiedad;
     }
 
     public Integer getSuperficie() {
@@ -68,46 +62,6 @@ public class InmueblePojo {
 
     public void setSuperficie(Integer superficie) {
         this.superficie = superficie;
-    }
-
-    public String getCalle() {
-        return calle;
-    }
-
-    public void setCalle(String calle) {
-        this.calle = calle;
-    }
-
-    public Integer getAltura() {
-        return altura;
-    }
-
-    public void setAltura(Integer altura) {
-        this.altura = altura;
-    }
-
-    public Long getIdLocalidad() {
-        return idLocalidad;
-    }
-
-    public void setIdLocalidad(Long idLocalidad) {
-        this.idLocalidad = idLocalidad;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public Long getIdEstado() {
-        return idEstado;
-    }
-
-    public void setIdEstado(Long idEstado) {
-        this.idEstado = idEstado;
     }
 
     public String getCantAmbiente() {
@@ -134,11 +88,59 @@ public class InmueblePojo {
         this.depto = depto;
     }
 
-    public Integer getAptoCredito() {
+    public Long getIdEstado() {
+        return idEstado;
+    }
+
+    public void setIdEstado(Long idEstado) {
+        this.idEstado = idEstado;
+    }
+
+    public String getCalle() {
+        return calle;
+    }
+
+    public void setCalle(String calle) {
+        this.calle = calle;
+    }
+
+    public Integer getAltura() {
+        return altura;
+    }
+
+    public void setAltura(Integer altura) {
+        this.altura = altura;
+    }
+
+    public Long getIdLocalidad() {
+        return idLocalidad;
+    }
+
+    public void setIdLocalidad(Long idLocalidad) {
+        this.idLocalidad = idLocalidad;
+    }
+
+    public boolean isAptoCredito() {
         return aptoCredito;
     }
 
-    public void setAptoCredito(Integer aptoCredito) {
+    public void setAptoCredito(boolean aptoCredito) {
         this.aptoCredito = aptoCredito;
+    }
+
+    public Integer getImporte() {
+        return importe;
+    }
+
+    public void setImporte(Integer importe) {
+        this.importe = importe;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }
