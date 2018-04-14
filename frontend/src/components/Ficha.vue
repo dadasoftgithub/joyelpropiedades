@@ -1,22 +1,24 @@
 <template>
   <div class="wrapper">
     <!-- Content here -->
-    <b-form @submit.prevent="consoleClick">
+    <b-form @submit.prevent="submitForm">
       <div class="row reset-margin">
         <b-col class="form-group" cols="sm-2
         ">
           <label for="fichaSelect" class="control-label">inmueble</label>
             <br>
-          <b-form-select v-model="inmueble" :options="inmuebles" class="form-control" id="fichaSelect" />
-           <div>Inmueble Seleccionado: <strong>{{ inmueble }}</strong></div>
+          <b-form-select v-model="idTipoPropiedad" :options="inmuebles" class="form-control" id="fichaSelect" />
+           <div>Inmueble Seleccionado: <strong>{{ idTipoPropiedad }}</strong></div>
         </b-col>
         <b-col class="form-group" cols="sm-2">
           <label for="superficie" class="control-label">superficie</label>
           <b-form-input type="number" number min="0" value="0" v-model.number="superficie" id="superficie" class="form-control dada-input"></b-form-input>
+
         </b-col>
         <b-col class="form-group" cols="sm-2">
-          <label for="ambientes" class="control-label">ambientes</label>
-           <b-form-input type="text" id="ambientes" v-model="ambientes"></b-form-input>
+          <label for="cantAmbiente" class="control-label">ambientes</label>
+           <b-form-input type="text" id="ambientes" v-model="cantAmbiente"></b-form-input>
+           <p>{{cantAmbiente}}</p>
         </b-col>
         <b-col class="form-group" cols="sm-2">
           <label for="piso" class="control-label">piso</label>
@@ -28,8 +30,8 @@
         </b-col>
         <b-col class="form-group" cols="sm-2">
            <label for="estado" class="control-label">estado</label>
-           <b-form-select v-model="estado" :options="estados" class="mb-3" id="estado" />
-            <div>Estado Seleccionado: <strong>{{ estado }}</strong></div>
+           <b-form-select v-model="idEstado" :options="estados" class="mb-3" id="estado" />
+            <div>Estado Seleccionado: <strong>{{ idEstado }}</strong></div>
         </b-col>
 
       </div> <!-- row -->
@@ -38,18 +40,24 @@
           <label for="calle" class="control-label">calle</label>
           <b-form-input type="text" id="calle" v-model="calle" autocomplete="calle" placeholder="Ingrese calle"></b-form-input>
         </b-col>
-        <b-col class="form-group" cols="sm-3">
+        <b-col class="form-group" cols="sm-2">
           <label for="altura" class="control-label">altura</label>
           <b-form-input type="number" min="0" value="0" v-model.number="altura" id="altura" class="form-control dada-input"></b-form-input>
         </b-col>
         <b-col class="form-group" cols="sm-3
         ">
           <label for="localidad" class="control-label">localidad</label>
-          <b-form-select v-model="localidad" :options="localidades" class="form-control mb-3" id="localidad" />
-           <div>Localidad Seleccionada: <strong>{{ localidad }}</strong></div>
+          <b-form-select v-model="idLocalidad" :options="localidades" class="form-control mb-3" id="localidad" />
+           <div>Localidad Seleccionada: <strong>{{ idLocalidad }}</strong></div>
         </b-col>
-        <b-col class="form-group" cols="sm-3" align-self="center">
-          <b-form-checkbox class="mb-sm-0" id="credito" v-model="apto_credito" true-value="1" false-value="0">apto credito</b-form-checkbox>
+        <b-col class="form-group" cols="sm-2" align-self="center">
+          <b-form-checkbox class="mb-sm-0" id="credito" v-model="aptoCredito" true-value="1" false-value="0">apto credito</b-form-checkbox>
+        </b-col>
+         <b-col class="form-group" cols="sm-2">
+          <label for="importe" class="control-label">importe</label>
+          <b-input-group size="lg" prepend="$" append=".00">
+          <b-form-input type="number" min="0" value="0" v-model.number="importe" id="importe" class="form-control dada-input"></b-form-input>
+          </b-input-group>
         </b-col>
       </div> <!-- row -->
 
@@ -71,51 +79,75 @@
 </template>
 <script>
 import Button from './Button'
+import { AXIOS } from './http-common'
 export default {
 
   data () {
     return {
-      inmueble: null,
+      esVenta: 1, /* 1 venta    0=alquiler */
+      idTipoPropiedad: null,
       inmuebles: [
         {value: null, text: 'Selecciona una opcion'},
-        {value: 0, text: 'Departamento'},
-        {value: 1, text: 'Casa'},
-        {value: {2: '3PO'}, text: 'This is an option with object value'},
-        {value: 3, text: 'Cochera'},
-        {value: 4, text: 'Local'},
-        {value: 5, text: 'Galpon'},
-        {value: 6, text: 'This one is disabled', disabled: true}
+        {value: 2, text: 'Departamento'},
+        {value: 3, text: 'Casa / Duplex'},
+        {value: 4, text: 'Tipo Casa'},
+        {value: 5, text: 'Local / Galpon'},
+        {value: 6, text: 'Lote / Terreno'},
+        {value: 7, text: 'This one is disabled', disabled: true}
       ],
       superficie: '',
-      ambientes: '',
+      cantAmbiente: '',
       piso: '',
       depto: '',
-      estado: null,
+      idEstado: null,
       estados: [
         { value: null, text: 'Selecciona un estado' },
-        { value: '0', text: 'vendido' },
-        { value: '1', text: 'reservado' },
-        { value: '2', text: 'alquilado' },
-        { value: '3', text: 'suspendido' }
+        { value: 1, text: 'Publicado' },
+        { value: 2, text: 'Reservado' },
+        { value: 3, text: 'Suspendido' },
+        { value: 4, text: 'Operado' }
       ],
-      descripcion: '',
       calle: '',
       altura: '',
-      localidad: null,
+      idLocalidad: null,
       localidades: [
         {value: null, text: 'Selecciona una localidad'},
-        {value: '0', text: 'Villa del Parque'},
-        {value: '1', text: 'Villa Devoto'},
-        {value: '2', text: 'Villa Crespo'}
+        {value: 36, text: 'Villa Crespo', disabled: true},
+        {value: 37, text: 'Villa del Parque'},
+        {value: 38, text: 'Villa Devoto'},
+        {value: 41, text: 'Villa Luro'}
       ],
-      apto_credito: false
-
+      aptoCredito: false, /* 0 false, 1 true */
+      importe: '',
+      descripcion: ''
     }
   },
   // props: ['options'],
   methods: {
-    consoleClick: function () {
-      console.log('Button clicked en ficha vue')
+    submitForm: function (event) {
+      console.log('Button clicked en ficha vue event', event)
+      AXIOS.post(`panel/saveInmueble`, {
+        esVenta: this.esVenta,
+        idTipoPropiedad: this.idTipoPropiedad,
+        superficie: this.superficie,
+        cantAmbiente: this.cantAmbiente,
+        piso: this.piso,
+        depto: this.depto,
+        idEstado: this.idEstado,
+        calle: this.calle,
+        altura: this.altura,
+        idLocalidad: this.idLocalidad,
+        aptoCredito: this.aptoCredito,
+        importe: this.importe,
+        descripcion: this.descripcion
+      }).then((response) => {
+        this.response = response.data
+        console.log('respuesta es response.data: ', response.data)
+        console.log('response STATUS', response.status)
+        console.log('response STATUSText', response.statusText)
+        console.log('response HEADERS', response.headers)
+        console.log('response  CONFIG', response.config)
+      })
     }
   },
   components: {
