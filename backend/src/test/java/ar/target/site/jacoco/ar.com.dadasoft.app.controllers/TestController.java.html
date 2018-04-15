@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TestController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">backend</a> &gt; <a href="index.source.html" class="el_package">ar.com.dadasoft.app.controllers</a> &gt; <span class="el_source">TestController.java</span></div><h1>TestController.java</h1><pre class="source lang-java linenums">package ar.com.dadasoft.app.controllers;
+
+import ar.com.dadasoft.app.entities.Test;
+import ar.com.dadasoft.app.entities.TestDireccion;
+import ar.com.dadasoft.app.pojos.TestPojo;
+import ar.com.dadasoft.app.services.TestService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
+import java.util.List;
+
+@RestController
+<span class="fc" id="L15">public class TestController {</span>
+
+    @Autowired
+    private TestService testService;
+
+//    @PostMapping(value = &quot;/testsave&quot;)
+//    public ModelAndView getUsers(@ModelAttribute(&quot;test&quot;)@Valid Test test){
+//
+//        ModelAndView model = new ModelAndView(&quot;test&quot;);
+//
+//        testService.guardar(test);
+//
+//        List&lt;Test&gt; tests = testService.listarTests();
+//
+//        model.addObject(&quot;tests&quot;, tests);
+//
+//        return model;
+//    }
+
+/*    @PostMapping(value = &quot;/panel/testsave&quot;)
+    public String saveIt(@RequestBody Test test){
+
+        testService.guardar(test);
+
+        return &quot;It was saved&quot;;
+    }*/
+
+    @PostMapping(value = &quot;/panel/testsave&quot;)
+    public String saveIt(@RequestBody TestPojo testPojo){
+<span class="nc" id="L44">        Test t = new Test();</span>
+<span class="nc" id="L45">        TestDireccion d = new TestDireccion();</span>
+
+<span class="nc" id="L47">        d.setCalle(testPojo.getCalle());</span>
+<span class="nc" id="L48">        d.setAltura(testPojo.getAltura());</span>
+
+<span class="nc" id="L50">        t.setEmail(testPojo.getEmail());</span>
+<span class="nc" id="L51">        t.setPassword(testPojo.getPassword());</span>
+<span class="nc" id="L52">        t.setDireccion(d);</span>
+<span class="nc" id="L53">        t.setTelefonos(testPojo.getTelefonos());</span>
+
+<span class="nc" id="L55">        testService.guardar(t);</span>
+
+<span class="nc" id="L57">        return &quot;It was saved&quot;;</span>
+    }
+
+
+    @GetMapping(value = &quot;/panel/testget&quot;)
+    public List&lt;Test&gt; getIt(){
+<span class="nc" id="L63">        return testService.listarTests();</span>
+    }
+
+
+    @GetMapping(value = &quot;/panel/testgetbyid/{id}&quot;)
+    public Test getById(@PathVariable Long id){
+<span class="nc" id="L69">        return testService.getTest(id);</span>
+    }
+
+/*
+
+    //@GetMapping(value=&quot;/posts&quot;)
+    public List&lt;Post&gt; posts(){
+        return postService.getAllPosts();
+    }
+
+    //@GetMapping(value=&quot;/the_post/{id}&quot;)
+    public Post getPostById(@PathVariable Long id){
+        return postService.getPost(id);
+    }
+
+    @PostMapping(value=&quot;/post&quot;)
+    public String publishPost(@RequestBody Post post){
+        CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(post.getDateCreated() == null)
+            post.setDateCreated(new Date());
+        post.setCreator(userService.getUser(userDetails.getUsername()));
+        postService.insert(post);
+        return &quot;Post was published&quot;;
+    }
+
+*/
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

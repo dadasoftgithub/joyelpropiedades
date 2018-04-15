@@ -127,7 +127,7 @@ SI A USTED LE CUESTA USAR LA COMPUTADORA Y POR ESO USA WINDOWS...
 
 11. instalar node.js
 
-	https://nodejs.org/dist/v8.9.4/node-v8.9.4-x64.msi
+	https://nodejs.org/en/
 
 12. reiniciar la maquina
 

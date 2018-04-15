@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Emprendimiento.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">backend</a> &gt; <a href="index.source.html" class="el_package">ar.com.dadasoft.app.entities</a> &gt; <span class="el_source">Emprendimiento.java</span></div><h1>Emprendimiento.java</h1><pre class="source lang-java linenums">package ar.com.dadasoft.app.entities;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = &quot;Emprendimiento&quot;)
+public class Emprendimiento {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name=&quot;id_emprendimiento&quot;)
+    private Long idEmprendimiento;
+
+    @NotEmpty
+    @Column(name=&quot;titulo&quot;)
+    private String titulo;
+
+    @Column(name=&quot;sum&quot;)
+    @NumberFormat(style = Style.NUMBER)
+    private Integer sum;
+
+    @Column(name=&quot;piscina&quot;)
+    @NumberFormat(style = Style.NUMBER)
+    private Integer piscina;
+
+    @Column(name=&quot;gimnasio&quot;)
+    @NumberFormat(style = Style.NUMBER)
+    private Integer gimnasio;
+
+    @Column(name=&quot;laundry&quot;)
+    @NumberFormat(style = Style.NUMBER)
+    private Integer laundry;
+
+    @Column(name=&quot;calle&quot;)
+    private String calle;
+
+    @Column(name=&quot;altura&quot;)
+    @NumberFormat(style = Style.NUMBER)
+    private Integer altura;
+    
+    @JsonIgnoreProperties({&quot;hibernateLazyInitializer&quot;, &quot;handler&quot;})
+    @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name=&quot;id_estado&quot;)
+    private Estado estado;
+
+    @JsonIgnoreProperties({&quot;hibernateLazyInitializer&quot;, &quot;handler&quot;})
+    @OneToMany(mappedBy = &quot;emprendimiento&quot;)
+    private List&lt;EmprendimientoDescripcion&gt; descripciones;
+
+    @JsonIgnoreProperties({&quot;hibernateLazyInitializer&quot;, &quot;handler&quot;})
+    @OneToMany(mappedBy = &quot;emprendimiento&quot;)
+    private List&lt;Foto&gt; fotos;
+
+
+<span class="fc" id="L61">    public Emprendimiento() {</span>
+<span class="fc" id="L62">    }</span>
+
+<span class="nc" id="L64">    public Emprendimiento(String titulo, Integer sum, Integer piscina, Integer gimnasio, Integer laundry, String calle, Integer altura, Estado estado, List&lt;EmprendimientoDescripcion&gt; descripciones) {</span>
+<span class="nc" id="L65">        this.titulo = titulo;</span>
+<span class="nc" id="L66">        this.sum = sum;</span>
+<span class="nc" id="L67">        this.piscina = piscina;</span>
+<span class="nc" id="L68">        this.gimnasio = gimnasio;</span>
+<span class="nc" id="L69">        this.laundry = laundry;</span>
+<span class="nc" id="L70">        this.calle = calle;</span>
+<span class="nc" id="L71">        this.altura = altura;</span>
+<span class="nc" id="L72">        this.estado = estado;</span>
+<span class="nc" id="L73">        this.descripciones = descripciones;</span>
+<span class="nc" id="L74">    }</span>
+
+<span class="nc" id="L76">    public Emprendimiento(Long idEmprendimiento, String titulo, Integer sum, Integer piscina, Integer gimnasio, Integer laundry, String calle, Integer altura, Estado estado, List&lt;EmprendimientoDescripcion&gt; descripciones) {</span>
+<span class="nc" id="L77">        this.idEmprendimiento = idEmprendimiento;</span>
+<span class="nc" id="L78">        this.titulo = titulo;</span>
+<span class="nc" id="L79">        this.sum = sum;</span>
+<span class="nc" id="L80">        this.piscina = piscina;</span>
+<span class="nc" id="L81">        this.gimnasio = gimnasio;</span>
+<span class="nc" id="L82">        this.laundry = laundry;</span>
+<span class="nc" id="L83">        this.calle = calle;</span>
+<span class="nc" id="L84">        this.altura = altura;</span>
+<span class="nc" id="L85">        this.estado = estado;</span>
+<span class="nc" id="L86">        this.descripciones = descripciones;</span>
+<span class="nc" id="L87">    }</span>
+
+
+    public Long getIdEmprendimiento() {
+<span class="nc" id="L91">        return idEmprendimiento;</span>
+    }
+
+    public void setIdEmprendimiento(Long idEdificio) {
+<span class="nc" id="L95">        this.idEmprendimiento = idEmprendimiento;</span>
+<span class="nc" id="L96">    }</span>
+
+    public String getTitulo() {
+<span class="nc" id="L99">        return titulo;</span>
+    }
+
+    public void setTitulo(String titulo) {
+<span class="nc" id="L103">        this.titulo = titulo;</span>
+<span class="nc" id="L104">    }</span>
+
+    public Integer getSum() {
+<span class="nc" id="L107">        return sum;</span>
+    }
+
+    public void setSum(Integer sum) {
+<span class="nc" id="L111">        this.sum = sum;</span>
+<span class="nc" id="L112">    }</span>
+
+    public Integer getPiscina() {
+<span class="nc" id="L115">        return piscina;</span>
+    }
+
+    public void setPiscina(Integer piscina) {
+<span class="nc" id="L119">        this.piscina = piscina;</span>
+<span class="nc" id="L120">    }</span>
+
+    public Integer getGimnasio() {
+<span class="nc" id="L123">        return gimnasio;</span>
+    }
+
+    public void setGimnasio(Integer gimnasio) {
+<span class="nc" id="L127">        this.gimnasio = gimnasio;</span>
+<span class="nc" id="L128">    }</span>
+
+    public Integer getLaundry() {
+<span class="nc" id="L131">        return laundry;</span>
+    }
+
+    public void setLaundry(Integer laundry) {
+<span class="nc" id="L135">        this.laundry = laundry;</span>
+<span class="nc" id="L136">    }</span>
+
+    public String getCalle() {
+<span class="nc" id="L139">        return calle;</span>
+    }
+
+    public void setCalle(String calle) {
+<span class="nc" id="L143">        this.calle = calle;</span>
+<span class="nc" id="L144">    }</span>
+
+    public Integer getAltura() {
+<span class="nc" id="L147">        return altura;</span>
+    }
+
+    public void setAltura(Integer altura) {
+<span class="nc" id="L151">        this.altura = altura;</span>
+<span class="nc" id="L152">    }</span>
+
+    public Estado getEstado() {
+<span class="nc" id="L155">        return estado;</span>
+    }
+
+    public void setEstado(Estado estado) {
+<span class="nc" id="L159">        this.estado = estado;</span>
+<span class="nc" id="L160">    }</span>
+
+    public List&lt;EmprendimientoDescripcion&gt; getDescripciones() {
+<span class="nc" id="L163">        return descripciones;</span>
+    }
+
+    public void setDescripciones(List&lt;EmprendimientoDescripcion&gt; descripciones) {
+<span class="nc" id="L167">        this.descripciones = descripciones;</span>
+<span class="nc" id="L168">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Inmueble.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">backend</a> &gt; <a href="index.source.html" class="el_package">ar.com.dadasoft.app.entities</a> &gt; <span class="el_source">Inmueble.java</span></div><h1>Inmueble.java</h1><pre class="source lang-java linenums">package ar.com.dadasoft.app.entities;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.List;
+
+@Entity
+@Table(name = &quot;Inmueble&quot;)
+public class Inmueble implements Serializable{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name=&quot;id_inmueble&quot;)
+    private Long idInmueble;
+
+    @NotNull
+    @JsonIgnoreProperties({&quot;hibernateLazyInitializer&quot;, &quot;handler&quot;})
+    @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name=&quot;id_tipo_propiedad&quot;)
+    private TipoPropiedad idTipoPropiedad;
+
+    @NotNull
+    @Column(name=&quot;es_venta&quot;)
+    private Integer esVenta;
+
+    @NotNull
+    @Column(name=&quot;importe&quot;)
+    private Integer importe;
+
+    @Column(name=&quot;superficie&quot;)
+    private Integer superficie;
+
+    @NotEmpty
+    @Column(name=&quot;calle&quot;)
+    private String calle;
+
+    @NotNull
+    @Column(name=&quot;altura&quot;)
+    private Integer altura;
+
+    @NotNull
+    @JsonIgnoreProperties({&quot;hibernateLazyInitializer&quot;, &quot;handler&quot;})
+    @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name=&quot;id_localidad&quot;)
+    private Localidad idLocalidad;
+
+    @Column(name=&quot;descripcion&quot;)
+    private String descripcion;
+
+    @NotNull
+    @JsonIgnoreProperties({&quot;hibernateLazyInitializer&quot;, &quot;handler&quot;})
+    @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name=&quot;id_estado&quot;)
+    private Estado idEstado;
+
+    @Column(name=&quot;cant_ambiente&quot;)
+    private String cantAmbiente;
+
+    @Column(name=&quot;piso&quot;)
+    private String piso;
+
+    @Column(name=&quot;depto&quot;)
+    private String depto;
+
+    @Column(name=&quot;apto_credito&quot;)
+    private Integer aptoCredito;
+
+    @JsonIgnoreProperties({&quot;hibernateLazyInitializer&quot;, &quot;handler&quot;})
+    @OneToMany(mappedBy = &quot;inmueble&quot;)
+    private List&lt;Foto&gt; fotos;
+
+
+<span class="fc" id="L77">    public Inmueble() {</span>
+<span class="fc" id="L78">    }</span>
+
+<span class="nc" id="L80">    public Inmueble(TipoPropiedad idTipoPropiedad, Integer esVenta, Integer importe, Integer superficie, String calle, Integer altura, Localidad idLocalidad, String descripcion, Estado idEstado, String cantAmbiente, String piso, String depto, Integer aptoCredito, List&lt;Foto&gt; fotos) {</span>
+<span class="nc" id="L81">        this.idTipoPropiedad = idTipoPropiedad;</span>
+<span class="nc" id="L82">        this.esVenta = esVenta;</span>
+<span class="nc" id="L83">        this.importe = importe;</span>
+<span class="nc" id="L84">        this.superficie = superficie;</span>
+<span class="nc" id="L85">        this.calle = calle;</span>
+<span class="nc" id="L86">        this.altura = altura;</span>
+<span class="nc" id="L87">        this.idLocalidad = idLocalidad;</span>
+<span class="nc" id="L88">        this.descripcion = descripcion;</span>
+<span class="nc" id="L89">        this.idEstado = idEstado;</span>
+<span class="nc" id="L90">        this.cantAmbiente = cantAmbiente;</span>
+<span class="nc" id="L91">        this.piso = piso;</span>
+<span class="nc" id="L92">        this.depto = depto;</span>
+<span class="nc" id="L93">        this.aptoCredito = aptoCredito;</span>
+<span class="nc" id="L94">        this.fotos = fotos;</span>
+<span class="nc" id="L95">    }</span>
+
+<span class="nc" id="L97">    public Inmueble(Long idInmueble, TipoPropiedad idTipoPropiedad, Integer esVenta, Integer importe, Integer superficie, String calle, Integer altura, Localidad idLocalidad, String descripcion, Estado idEstado, String cantAmbiente, String piso, String depto, Integer aptoCredito, List&lt;Foto&gt; fotos) {</span>
+<span class="nc" id="L98">        this.idInmueble = idInmueble;</span>
+<span class="nc" id="L99">        this.idTipoPropiedad = idTipoPropiedad;</span>
+<span class="nc" id="L100">        this.esVenta = esVenta;</span>
+<span class="nc" id="L101">        this.importe = importe;</span>
+<span class="nc" id="L102">        this.superficie = superficie;</span>
+<span class="nc" id="L103">        this.calle = calle;</span>
+<span class="nc" id="L104">        this.altura = altura;</span>
+<span class="nc" id="L105">        this.idLocalidad = idLocalidad;</span>
+<span class="nc" id="L106">        this.descripcion = descripcion;</span>
+<span class="nc" id="L107">        this.idEstado = idEstado;</span>
+<span class="nc" id="L108">        this.cantAmbiente = cantAmbiente;</span>
+<span class="nc" id="L109">        this.piso = piso;</span>
+<span class="nc" id="L110">        this.depto = depto;</span>
+<span class="nc" id="L111">        this.aptoCredito = aptoCredito;</span>
+<span class="nc" id="L112">        this.fotos = fotos;</span>
+<span class="nc" id="L113">    }</span>
+
+
+    public Long getIdInmueble() {
+<span class="nc" id="L117">        return idInmueble;</span>
+    }
+
+    public void setIdInmueble(Long idInmueble) {
+<span class="nc" id="L121">        this.idInmueble = idInmueble;</span>
+<span class="nc" id="L122">    }</span>
+
+    public TipoPropiedad getIdTipoPropiedad() {
+<span class="nc" id="L125">        return idTipoPropiedad;</span>
+    }
+
+    public void setIdTipoPropiedad(TipoPropiedad idTipoPropiedad) {
+<span class="nc" id="L129">        this.idTipoPropiedad = idTipoPropiedad;</span>
+<span class="nc" id="L130">    }</span>
+
+    public Integer getEsVenta() {
+<span class="nc" id="L133">        return esVenta;</span>
+    }
+
+    public void setEsVenta(Integer esVenta) {
+<span class="nc" id="L137">        this.esVenta = esVenta;</span>
+<span class="nc" id="L138">    }</span>
+
+    public Integer getImporte() {
+<span class="nc" id="L141">        return importe;</span>
+    }
+
+    public void setImporte(Integer importe) {
+<span class="nc" id="L145">        this.importe = importe;</span>
+<span class="nc" id="L146">    }</span>
+
+    public Integer getSuperficie() {
+<span class="nc" id="L149">        return superficie;</span>
+    }
+
+    public void setSuperficie(Integer superficie) {
+<span class="nc" id="L153">        this.superficie = superficie;</span>
+<span class="nc" id="L154">    }</span>
+
+    public String getCalle() {
+<span class="nc" id="L157">        return calle;</span>
+    }
+
+    public void setCalle(String calle) {
+<span class="nc" id="L161">        this.calle = calle;</span>
+<span class="nc" id="L162">    }</span>
+
+    public Integer getAltura() {
+<span class="nc" id="L165">        return altura;</span>
+    }
+
+    public void setAltura(Integer altura) {
+<span class="nc" id="L169">        this.altura = altura;</span>
+<span class="nc" id="L170">    }</span>
+
+    public Localidad getIdLocalidad() {
+<span class="nc" id="L173">        return idLocalidad;</span>
+    }
+
+    public void setIdLocalidad(Localidad idLocalidad) {
+<span class="nc" id="L177">        this.idLocalidad = idLocalidad;</span>
+<span class="nc" id="L178">    }</span>
+
+    public String getDescripcion() {
+<span class="nc" id="L181">        return descripcion;</span>
+    }
+
+    public void setDescripcion(String descripcion) {
+<span class="nc" id="L185">        this.descripcion = descripcion;</span>
+<span class="nc" id="L186">    }</span>
+
+    public Estado getIdEstado() {
+<span class="nc" id="L189">        return idEstado;</span>
+    }
+
+    public void setIdEstado(Estado idEstado) {
+<span class="nc" id="L193">        this.idEstado = idEstado;</span>
+<span class="nc" id="L194">    }</span>
+
+    public String getCantAmbiente() {
+<span class="nc" id="L197">        return cantAmbiente;</span>
+    }
+
+    public void setCantAmbiente(String cantAmbiente) {
+<span class="nc" id="L201">        this.cantAmbiente = cantAmbiente;</span>
+<span class="nc" id="L202">    }</span>
+
+    public String getPiso() {
+<span class="nc" id="L205">        return piso;</span>
+    }
+
+    public void setPiso(String piso) {
+<span class="nc" id="L209">        this.piso = piso;</span>
+<span class="nc" id="L210">    }</span>
+
+    public String getDepto() {
+<span class="nc" id="L213">        return depto;</span>
+    }
+
+    public void setDepto(String depto) {
+<span class="nc" id="L217">        this.depto = depto;</span>
+<span class="nc" id="L218">    }</span>
+
+    public Integer getAptoCredito() {
+<span class="nc" id="L221">        return aptoCredito;</span>
+    }
+
+    public void setAptoCredito(Integer aptoCredito) {
+<span class="nc" id="L225">        this.aptoCredito = aptoCredito;</span>
+<span class="nc" id="L226">    }</span>
+
+    public List&lt;Foto&gt; getFotos() {
+<span class="nc" id="L229">        return fotos;</span>
+    }
+
+    public void setFotos(List&lt;Foto&gt; fotos) {
+<span class="nc" id="L233">        this.fotos = fotos;</span>
+<span class="nc" id="L234">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

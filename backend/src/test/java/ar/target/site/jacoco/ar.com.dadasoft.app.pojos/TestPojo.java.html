@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TestPojo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">backend</a> &gt; <a href="index.source.html" class="el_package">ar.com.dadasoft.app.pojos</a> &gt; <span class="el_source">TestPojo.java</span></div><h1>TestPojo.java</h1><pre class="source lang-java linenums">package ar.com.dadasoft.app.pojos;
+
+import ar.com.dadasoft.app.entities.TestTel;
+
+import java.util.List;
+
+public class TestPojo {
+
+    private String email;
+    private String password;
+    private String calle;
+    private Integer altura;
+    private List&lt;TestTel&gt; telefonos;
+
+
+<span class="nc" id="L16">    public TestPojo() {</span>
+<span class="nc" id="L17">    }</span>
+
+<span class="nc" id="L19">    public TestPojo(String email, String password, String calle, Integer altura, List&lt;TestTel&gt; telefonos) {</span>
+<span class="nc" id="L20">        this.email = email;</span>
+<span class="nc" id="L21">        this.password = password;</span>
+<span class="nc" id="L22">        this.calle = calle;</span>
+<span class="nc" id="L23">        this.altura = altura;</span>
+<span class="nc" id="L24">        this.telefonos = telefonos;</span>
+<span class="nc" id="L25">    }</span>
+
+
+    public String getEmail() {
+<span class="nc" id="L29">        return email;</span>
+    }
+
+    public void setEmail(String email) {
+<span class="nc" id="L33">        this.email = email;</span>
+<span class="nc" id="L34">    }</span>
+
+    public String getPassword() {
+<span class="nc" id="L37">        return password;</span>
+    }
+
+    public void setPassword(String password) {
+<span class="nc" id="L41">        this.password = password;</span>
+<span class="nc" id="L42">    }</span>
+
+    public String getCalle() {
+<span class="nc" id="L45">        return calle;</span>
+    }
+
+    public void setCalle(String calle) {
+<span class="nc" id="L49">        this.calle = calle;</span>
+<span class="nc" id="L50">    }</span>
+
+    public Integer getAltura() {
+<span class="nc" id="L53">        return altura;</span>
+    }
+
+    public void setAltura(Integer altura) {
+<span class="nc" id="L57">        this.altura = altura;</span>
+<span class="nc" id="L58">    }</span>
+
+    public List&lt;TestTel&gt; getTelefonos() {
+<span class="nc" id="L61">        return telefonos;</span>
+    }
+
+    public void setTelefonos(List&lt;TestTel&gt; telefonos) {
+<span class="nc" id="L65">        this.telefonos = telefonos;</span>
+<span class="nc" id="L66">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

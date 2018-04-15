@@ -1,0 +1,15 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+backend,ar.com.dadasoft.app.entities,EmprendimientoDescripcion,48,0,0,0,21,0,9,0,9,0
+backend,ar.com.dadasoft.app.entities,Inmueble,198,3,0,0,78,2,32,1,32,1
+backend,ar.com.dadasoft.app.entities,Estado,42,3,0,0,18,2,8,1,8,1
+backend,ar.com.dadasoft.app.entities,Localidad,42,3,0,0,18,2,8,1,8,1
+backend,ar.com.dadasoft.app.entities,Emprendimiento,134,3,0,0,53,2,22,1,22,1
+backend,ar.com.dadasoft.app.entities,Test,68,3,0,0,28,2,12,1,12,1
+backend,ar.com.dadasoft.app.entities,TipoPropiedad,29,3,0,0,13,2,6,1,6,1
+backend,ar.com.dadasoft.app.entities,Foto,68,3,0,0,28,2,12,1,12,1
+backend,ar.com.dadasoft.app.entities,TestTel,42,3,0,0,18,2,8,1,8,1
+backend,ar.com.dadasoft.app.entities,TestDireccion,33,3,0,0,14,2,7,1,7,1
+backend,ar.com.dadasoft.app.services,TestService,16,3,0,0,4,1,3,1,3,1
+backend,ar.com.dadasoft.app.controllers,TestController,46,3,0,0,12,1,3,1,3,1
+backend,ar.com.dadasoft.app,AppApplication,5,3,0,0,2,1,1,1,1,1
+backend,ar.com.dadasoft.app.pojos,TestPojo,56,0,0,0,24,0,12,0,12,0
