@@ -37,8 +37,7 @@
 		<!-- spring-boot-devtools : It provides developer tools. These tools are helpful in application development mode. One of the features of developer tool is automatic restart of the server for any change in code.  -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-dwww.win2.cn/g9
-				ols</artifactId>
+			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
 
