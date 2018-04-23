@@ -20,12 +20,12 @@ public class Test implements Serializable{
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_direccion")
+    @JoinColumn(name="id_direccion", foreignKey = @ForeignKey(name = "FK_TEST_TESTDIRECCION"))
     private TestDireccion direccion;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_estado")
+    @JoinColumn(name="id_estado", foreignKey = @ForeignKey(name = "FK_TEST_ESTADO"))
     private Estado estado;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})

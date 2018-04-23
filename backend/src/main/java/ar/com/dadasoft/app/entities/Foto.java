@@ -19,14 +19,14 @@ public class Foto {
     @NumberFormat(style = Style.NUMBER)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_inmueble")
+    @JoinColumn(name="id_inmueble", foreignKey = @ForeignKey(name = "FK_FOTO_INMUEBLE"))
     private Inmueble inmueble;
     
     //@Column(name="id_emprendimiento")
     @NumberFormat(style = Style.NUMBER)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_emprendimiento")
+    @JoinColumn(name="id_emprendimiento", foreignKey = @ForeignKey(name = "FK_FOTO_EMPRENDIMIENTO"))
     private Emprendimiento emprendimiento;
     
     @Column(name="id_tipo_dispositivo")

@@ -20,7 +20,7 @@ public class Inmueble implements Serializable{
     @NotNull
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_tipo_propiedad")
+    @JoinColumn(name="id_tipo_propiedad", foreignKey = @ForeignKey(name = "FK_INMUEBLE_TIPOPROPIEDAD"))
     private TipoPropiedad tipoPropiedad;
 
     @NotNull
@@ -45,7 +45,7 @@ public class Inmueble implements Serializable{
     @NotNull
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_localidad")
+    @JoinColumn(name="id_localidad", foreignKey = @ForeignKey(name = "FK_INMUEBLE_LOCALIDAD"))
     private Localidad localidad;
 
     @Column(name="descripcion")
@@ -54,7 +54,7 @@ public class Inmueble implements Serializable{
     @NotNull
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_estado")
+    @JoinColumn(name="id_estado", foreignKey = @ForeignKey(name = "FK_INMUEBLE_ESTADO"))
     private Estado estado;
 
     @Column(name="cant_ambiente")

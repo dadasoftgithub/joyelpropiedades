@@ -49,12 +49,8 @@ public class Emprendimiento {
     
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_estado")
+    @JoinColumn(name="id_estado", foreignKey = @ForeignKey(name = "FK_EMPRENDIMIENTO_ESTADO"))
     private Estado estado;
-
-/*    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @OneToMany(mappedBy = "emprendimiento")
-    private List<EmprendimientoDescripcion> descripciones;*/
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(mappedBy = "emprendimiento")

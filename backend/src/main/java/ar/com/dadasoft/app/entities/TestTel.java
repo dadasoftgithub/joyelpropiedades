@@ -23,7 +23,7 @@ public class TestTel {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JsonBackReference
     @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="id")
+    @JoinColumn(name="id", foreignKey = @ForeignKey(name = "FK_TESTTEL_TEST"))
     private Test test;
 
 
