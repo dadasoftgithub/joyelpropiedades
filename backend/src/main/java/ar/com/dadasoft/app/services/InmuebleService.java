@@ -5,7 +5,6 @@ import ar.com.dadasoft.app.pojos.InmueblePojo;
 import ar.com.dadasoft.app.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -21,15 +20,44 @@ public class InmuebleService {
     private EstadoRepo estadoRepo;
 
 
-
+    /**
+     * Metodo para listar los inmuebles
+     * @return List<Inmueble>
+     */
     public List<Inmueble> listarInmuebles(){
         return inmuebleRepo.findAll();
     }
 
+    /**
+     * Metodo para obtener un inmueble a partir del id del inmueble
+     * @param id
+     * @return Inmueble
+     */
     public Inmueble getInmueble(Long id){
         return inmuebleRepo.findOne(id);
     }
 
+    /**
+     * Metodo para salvar un inmueble
+     * <p>
+     *     parametros de entrada (parametros de inmueblePojo):
+     *     Integer esVenta
+     *     Long idTipoPropiedad
+     *     Integer superficie
+     *     String cantAmbiente
+     *     String piso
+     *     String depto
+     *     Long idEstado
+     *     String calle
+     *     Integer altura
+     *     Long idLocalidad
+     *     boolean aptoCredito
+     *     Integer importe
+     *     String descripcion
+     * </p>
+     * @param inmueblePojo
+     * @return Inmueble
+     */
     public Inmueble guardarInmueble(InmueblePojo inmueblePojo){
 
         Integer aptoCredito = 0;
@@ -64,6 +92,28 @@ public class InmuebleService {
         return inmueble;
     }
 
+    /**
+     * Metodo para actualizar un inmueble
+     * <p>
+     *     parametros de entrada (parametros de inmueblePojo):
+     *     Integer esVenta
+     *     Long idTipoPropiedad
+     *     Integer superficie
+     *     String cantAmbiente
+     *     String piso
+     *     String depto
+     *     Long idEstado
+     *     String calle
+     *     Integer altura
+     *     Long idLocalidad
+     *     boolean aptoCredito
+     *     Integer importe
+     *     String descripcion
+     * </p>
+     * @param idInmueble
+     * @param inmueblePojo
+     * @return boolean
+     */
     public boolean modificarInmueble(Long idInmueble, InmueblePojo inmueblePojo){
 
         Integer aptoCredito = 0;

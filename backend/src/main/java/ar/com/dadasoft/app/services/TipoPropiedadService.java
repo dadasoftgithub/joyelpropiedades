@@ -1,6 +1,10 @@
-package src.main.java.ar.com.dadasoft.app.services;
+package ar.com.dadasoft.app.services;
 
 import ar.com.dadasoft.app.entities.TipoPropiedad;
+import ar.com.dadasoft.app.repositories.TipoPropiedadRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class TipoPropiedadService {
@@ -10,7 +14,7 @@ public class TipoPropiedadService {
 
 
     public List<TipoPropiedad> listarTipoPropiedad() {
-        return TipoPropiedadRepo.findAll();
+        return tipoPropiedadRepo.findAll();
     }
 
 }
