@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Tipo_Propiedad")
+@Table(name = "tipo_propiedad")
 public class TipoPropiedad {
 
     @Id

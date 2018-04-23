@@ -1,6 +1,6 @@
 package ar.com.dadasoft.app.entities;
 
-public class TestLean {
+public class testlean {
 	
 	public String nombre;
 	

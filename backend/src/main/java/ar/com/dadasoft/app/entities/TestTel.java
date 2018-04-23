@@ -8,7 +8,7 @@ import org.springframework.format.annotation.NumberFormat;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Test_Tel")
+@Table(name = "test_tel")
 public class TestTel {
 
     @Id
