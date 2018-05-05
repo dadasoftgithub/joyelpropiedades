@@ -30,7 +30,8 @@
         </b-col>
         <b-col class="form-group" cols="sm-2">
            <label for="estado" class="control-label">estado</label>
-           <b-form-select v-model="idEstado" :options="estados" class="mb-3" id="estado" />
+           <b-form-select v-model="idEstado" class="mb-3" id="estado"/>
+            <option></option>
             <div>Estado Seleccionado: <strong>{{ idEstado }}</strong></div>
         </b-col>
 
@@ -74,6 +75,12 @@
           <dada-btn type="submit">Enviar</dada-btn>
         </b-col>
       </div>
+     <!--  <div> estados
+        <ul  v-if="estates && estates.length">
+          <li v-for="estate of estates" :key="estate.id">
+            <p>{{estate.idEstado}}</p>
+          </li>
+        </ul></div> -->
     </b-form>
   </div> <!-- wrapper -->
 </template>
@@ -100,13 +107,7 @@ export default {
       piso: '',
       depto: '',
       idEstado: null,
-      estados: [
-        { value: null, text: 'Selecciona un estado' },
-        { value: 1, text: 'Publicado' },
-        { value: 2, text: 'Reservado' },
-        { value: 3, text: 'Suspendido' },
-        { value: 4, text: 'Operado' }
-      ],
+      estados: [],
       calle: '',
       altura: '',
       idLocalidad: null,
@@ -148,7 +149,17 @@ export default {
         console.log('response HEADERS', response.headers)
         console.log('response  CONFIG', response.config)
       })
+    },
+    getEstados: function () {
+      AXIOS.get(`panel/getestados`)
+        .then(response => {
+          this.estados = response.data
+          console.log(this.estados)
+        })
     }
+  },
+  mounted () {
+    this.getEstados()
   },
   components: {
     'dada-btn': Button
