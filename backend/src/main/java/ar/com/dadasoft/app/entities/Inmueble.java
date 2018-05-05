@@ -73,11 +73,15 @@ public class Inmueble implements Serializable{
     @OneToMany(mappedBy = "inmueble")
     private List<Foto> fotos;
 
+    @Column(name="enable")
+    @NotNull
+    private Integer enable;
+
 
     public Inmueble() {
     }
 
-    public Inmueble(TipoPropiedad tipoPropiedad, Integer esVenta, Integer importe, Integer superficie, String calle, Integer altura, Localidad localidad, String descripcion, Estado estado, String cantAmbiente, String piso, String depto, Integer aptoCredito, List<Foto> fotos) {
+    public Inmueble(TipoPropiedad tipoPropiedad, Integer esVenta, Integer importe, Integer superficie, String calle, Integer altura, Localidad localidad, String descripcion, Estado estado, String cantAmbiente, String piso, String depto, Integer aptoCredito, List<Foto> fotos, Integer enable) {
         this.tipoPropiedad = tipoPropiedad;
         this.esVenta = esVenta;
         this.importe = importe;
@@ -92,9 +96,10 @@ public class Inmueble implements Serializable{
         this.depto = depto;
         this.aptoCredito = aptoCredito;
         this.fotos = fotos;
+        this.enable = enable;
     }
 
-    public Inmueble(Long idInmueble, TipoPropiedad tipoPropiedad, Integer esVenta, Integer importe, Integer superficie, String calle, Integer altura, Localidad localidad, String descripcion, Estado estado, String cantAmbiente, String piso, String depto, Integer aptoCredito, List<Foto> fotos) {
+    public Inmueble(Long idInmueble, TipoPropiedad tipoPropiedad, Integer esVenta, Integer importe, Integer superficie, String calle, Integer altura, Localidad localidad, String descripcion, Estado estado, String cantAmbiente, String piso, String depto, Integer aptoCredito, List<Foto> fotos, Integer enable) {
         this.idInmueble = idInmueble;
         this.tipoPropiedad = tipoPropiedad;
         this.esVenta = esVenta;
@@ -110,6 +115,7 @@ public class Inmueble implements Serializable{
         this.depto = depto;
         this.aptoCredito = aptoCredito;
         this.fotos = fotos;
+        this.enable = enable;
     }
 
 
@@ -231,5 +237,13 @@ public class Inmueble implements Serializable{
 
     public void setFotos(List<Foto> fotos) {
         this.fotos = fotos;
+    }
+
+    public Integer getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Integer enable) {
+        this.enable = enable;
     }
 }

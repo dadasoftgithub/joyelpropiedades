@@ -61,6 +61,7 @@ public class InmuebleService {
     public Inmueble guardarInmueble(InmueblePojo inmueblePojo){
 
         Integer aptoCredito = 0;
+        Integer enable = 1;
 
         //TODO - validar que no sean nulos los campos!!
         TipoPropiedad tipoPropiedad = tipoPropiedadRepo.findOne(inmueblePojo.getIdTipoPropiedad());
@@ -80,6 +81,7 @@ public class InmuebleService {
         inmueble.setCantAmbiente(inmueblePojo.getCantAmbiente());
         inmueble.setPiso(inmueblePojo.getPiso());
         inmueble.setDepto(inmueblePojo.getDepto());
+        inmueble.setEnable(enable);
 
         if (inmueblePojo.isAptoCredito()) {
             aptoCredito = 1;
@@ -142,6 +144,23 @@ public class InmuebleService {
         }
 
         inmueble.setAptoCredito(aptoCredito);
+
+        inmuebleRepo.save(inmueble);
+
+        return true;
+    }
+
+    /**
+     * Metodo para eliminar/deshabilitar un inmueble
+     * @param idInmueble
+     * @return boolean
+     */
+    public boolean deleteInmueble(Long idInmueble){
+
+        //TODO - validar que no sean nulos los campos!!
+        Inmueble inmueble = inmuebleRepo.findOne(idInmueble);
+
+        inmueble.setEnable(0);
 
         inmuebleRepo.save(inmueble);
 

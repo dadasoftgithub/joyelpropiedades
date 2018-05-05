@@ -88,6 +88,16 @@ public class PanelController {
         return inmuebleService.modificarInmueble(idInmueble, inmueblePojo);
     }
 
+    /**
+     * Metodo para eliminar/deshabilitar un inmueble a partir del id del inmueble
+     * @param idInmueble
+     * @return Inmueble
+     */
+    @GetMapping(value = "/panel/deleteinmueble/{id}")
+    public boolean delteInmueble(@PathVariable(value = "id") Long idInmueble){
+        return inmuebleService.deleteInmueble(idInmueble);
+    }
+
 
 
 
